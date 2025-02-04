@@ -1,33 +1,44 @@
-import React, { useState } from "react";
-import Login from "./pages/Login";
+import React, { useState } from 'react';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Overlay from './pages/Overlay';
+import Navbar from './Components/Navbar';
+import Dashboardnav from './Components/Dashnav';
+import Dashboardside from './Components/Sidebar';
+import { DarkModeProvider } from "./Components/Darkmode";
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+const App = () => {
+    // State to track if right panel is active
+    const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+
+    // Toggle panel state on button click
+    const handleOverlayClick = () => {
+        setIsRightPanelActive((prev) => !prev); // Toggle state
+    };
+
+    return (
+        <DarkModeProvider>
+        <div className="dashboard">
+            <Dashboardside/>
+            <Dashboardnav />
+        </div>
+    </DarkModeProvider>
+       
+        
+    //     <div className={`container ${isRightPanelActive ? 'right-panel-active' : ''}`} id="container">
+            
+    //         <SignIn />
+    //         <SignUp />
+    //         <Overlay />
+    //         <button id="overlayBtn" onClick={handleOverlayClick}>
+    //             {isRightPanelActive ? 'Switch to Sign In' : 'Switch to Sign Up'}
+    //         </button>
+    //     </div>
+       
+        // <Navbar/>
+    );
+};
+
+export default App;

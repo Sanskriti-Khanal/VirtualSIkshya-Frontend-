@@ -1,0 +1,130 @@
+
+/* Header Styles */
+
+.header-area {
+    background: transparent !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    height: 80px;
+    background-color: #153969 !important;
+  }
+  
+  .header-sticky {
+    background: #153969;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 25px 25px;
+  }
+  
+  /* Navigation */
+  .main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  /* Search Bar */
+  .search-input {
+    position: relative;
+  }
+  
+  .search-input input {
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
+    border: none;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  
+  .search-input i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+  }
+  
+  /* Menu */
+  .nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav li {
+    list-style: none;
+  }
+  
+  .nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+  }
+  
+  .nav a:hover,
+  .nav a.active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Mobile Menu */
+  .menu-trigger {
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .menu-trigger span,
+  .menu-trigger span::before,
+  .menu-trigger span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    transition: 0.3s;
+  }
+  
+  .menu-trigger span::before {
+    top: -8px;
+  }
+  
+  .menu-trigger span::after {
+    top: 8px;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background: #3D5A80;
+      width: 100%;
+      left: 0;
+      top: 80px;
+      padding: 10px 0;
+      border-radius: 0 0 25px 25px;
+    }
+  
+    .nav.open {
+      display: flex;
+    }
+  
+    .menu-trigger {
+      display: block;
+    }
+  }
+  
