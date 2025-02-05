@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .routine-container{
+    margin-top: 60px;
+    width:  100%;
+  }
+  .header p{
+    font-size: 18px;
+    padding-left: 150px;
+
+  }
+  .routine-box p{
+    font-size: 15px;
+    
+  }
+  .header h1{
+    color: #f4f4f4;
+    padding-left: 150px;
+    
+  }
+  .header {
+    text-align: center;
+    padding: 20px;
+    background-color: #666;
+    color: white;
+  }
+  
+  table {
+    width: 75%;
+    border-collapse: collapse;
+    margin-left: 20%;
+    
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+    
+  }
+  
+  th {
+    background-color: #666;
+    color: white;
+  }
+  
+  .routine-box {
+    background-color: #2B4257;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  
+ 
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 5px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: black;
+  }
