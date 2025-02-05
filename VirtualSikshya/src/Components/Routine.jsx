@@ -72,7 +72,7 @@ const Routine = () => {
         <td></td>
         <td></td>
       </tr>
-      <tr>
+      {/* <tr>
         <td>8:00 AM</td>
         <td>
           <div class="routine-box" onclick="showDetails('Sunday', '08:30 AM - 10:00 AM', 'ST5007CEM Web Development', 'Block E (ICR-2)', 'Theory', 'Ayush Kaji Dangol')">
@@ -223,7 +223,7 @@ const Routine = () => {
             <p>08:30 AM - 10:00 AM</p>
           </div></td>
         <td></td>
-      </tr>
+      </tr> */}
           {/* Add more rows as needed */}
         </tbody>
       </table>
