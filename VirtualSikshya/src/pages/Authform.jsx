@@ -15,6 +15,16 @@ const AuthForm = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const token = query.get("token");
+
+    if (token) {
+      localStorage.setItem("token", token);
+      navigate("/guest-dashboard");
+    }
+  }, []);
+
   // Toggle form view
   const handleToggle = () => {
     setIsRightPanelActive(!isRightPanelActive);
@@ -36,7 +46,7 @@ const AuthForm = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:6000/api/users/login", formData);
+      const response = await axios.post("http://localhost:3001/api/users/login", formData);
       const { token, role, user_id } = response.data;
 
       localStorage.setItem("token", token);
@@ -58,11 +68,11 @@ const AuthForm = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:6000/api/users/register", registerData);
+      await axios.post("http://localhost:3001/api/users/register", registerData);
       alert("Registration successful! You can now log in.");
       setIsRightPanelActive(false);
     } catch (err) {
-      setError("Registration failed. Please check your details.");
+      window.alert("Registration failed. Please check your details.");
     }
   };
 
@@ -106,9 +116,9 @@ const AuthForm = () => {
           <h1>Sign in</h1>
           {error && <p className="error">{error}</p>}
           <div className="social-container">
-            <a href="#" className="social"><FontAwesomeIcon icon={faFacebookF} /></a>
-            <a href="#" className="social"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-            <a href="#" className="social"><FontAwesomeIcon icon={faLinkedinIn} /></a>
+            <a href="#http://localhost:3001/auth/google" className="social"><FontAwesomeIcon icon={faFacebookF} /></a>
+            <a href="http://localhost:3001/auth/facebook" className="social"><FontAwesomeIcon icon={faGooglePlusG} /></a>
+            <a href="#http://localhost:3001/auth/linkedin" className="social"><FontAwesomeIcon icon={faLinkedinIn} /></a>
           </div>
           <span>or use your account</span>
           <div className="infield">
