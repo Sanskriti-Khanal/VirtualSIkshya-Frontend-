@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import bgImage from '../assets/Images/Bg.png';
 import logoImage from "../assets/Images/Logo.png";
 import '../styles/Signin.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGooglePlusG, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 
 
