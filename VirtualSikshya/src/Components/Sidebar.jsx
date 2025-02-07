@@ -1,17 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { DarkModeContext } from './Darkmode';
-import Routine from './Routine'; // Import the Routine component
 import '../styles/Sidebar.css';
 import logo1 from '../assets/Images/logo1.png';
 import logo2 from '../assets/Images/logo2.png';
 
 const Sidebar = () => {
   const { isDarkMode } = useContext(DarkModeContext);
-  const [showRoutine, setShowRoutine] = useState(false);
 
-  const handleRoutineClick = () => {
-    setShowRoutine(!showRoutine);
-  };
 
   return (
     <>
@@ -29,7 +24,7 @@ const Sidebar = () => {
           <li><a href="#"><i className="fas fa-chart-line"></i><span>Results</span></a></li>
           <li><a href="#"><i className="fas fa-calendar-alt"></i><span>Events</span></a></li>
           <li>
-            <a href="#" onClick={handleRoutineClick}>
+            <a href="#">
               <i className="fas fa-clock"></i><span>Routine</span>
             </a>
           </li>
@@ -41,8 +36,6 @@ const Sidebar = () => {
         </ul>
       </aside>
 
-      {/* Display Routine component when showRoutine is true */}
-      {showRoutine && <Routine />}
     </>
   );
 };

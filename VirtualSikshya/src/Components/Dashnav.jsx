@@ -4,13 +4,24 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../styles/Sidebar.css';
 import profileImage from '../assets/Images/profile.jpg';
 
-const Dashnav = () => {
+const Dashnav = ({ role}) => {
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+
+    // Determine the greeting message dynamically
+    const getGreetingMessage = () => {
+        if (role === "admin") {
+            return "Welcome to Admin’s Dashboard";
+        } else if (role === "teacher") {
+            return "Welcome to Teacher’s Dashboard";
+        } else {
+            return "Welcome to Student’s Dashboard"; // Default to student
+        }
+    };
 
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <span className="greeting">Welcome to Student's Dashboard</span>
+                <span className="greeting">{getGreetingMessage()}</span>
             </div>
             <div className="navbar-right">
                 <input type="text" className="search-bar" placeholder="Search..." />
