@@ -5,6 +5,7 @@ import '../styles/Signin.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGooglePlusG, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -46,21 +47,35 @@ const AuthForm = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:3001/api/users/login", formData);
-      const { token, role, user_id } = response.data;
+        const response = await axios.post("http://localhost:3001/api/users/login", formData);
+        console.log("🔍 API Response:", response.data); // Debugging log
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("user_id", user_id);
-      localStorage.setItem("role", role);
+        const { token, role, user_id, name } = response.data; // Ensure API returns "name"
 
-      if (role === "student") navigate("/student-dashboard");
-      else if (role === "teacher") navigate("/teacher-dashboard");
-      else if (role === "admin") navigate("/admin-dashboard");
-      else navigate("/guest-dashboard");
+        if (!name) {
+            console.error("❌ Error: User name is missing in API response");
+            window.alert("Login failed: No user name received");
+            return;
+        }
+
+        const userData = { token, role, user_id, name }; // ✅ Store full user data
+
+        localStorage.setItem("user", JSON.stringify(userData)); // ✅ Save user object in localStorage
+        console.log("✅ Stored User in localStorage:", JSON.parse(localStorage.getItem("user"))); // Debugging log
+
+        if (role === "student") navigate("/student-dashboard");
+        else if (role === "teacher") navigate("/teacher-dashboard");
+        else if (role === "admin") navigate("/admin-dashboard");
+        else navigate("/guest-dashboard");
     } catch (err) {
-      window.alert("Incorrect Credentials");
+        console.error("❌ Login Error:", err);
+        window.alert("Incorrect Credentials");
     }
-  };
+};
+
+
+     
+
 
   // Handle Registration
   const handleRegister = async (e) => {
