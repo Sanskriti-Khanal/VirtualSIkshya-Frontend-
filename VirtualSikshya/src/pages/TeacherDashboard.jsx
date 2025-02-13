@@ -7,7 +7,9 @@ import Modal from "react-modal";
 import "../styles/teacherDashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import RoutineTable from "../Components/RoutineTable";
 import Eventcalendar from "../Components/EventCalendar";
+import Chart from "../Components/chart";
 
 // Import and register required Chart.js components
 import {
@@ -163,44 +165,18 @@ const TeacherDashboard = () => {
           </div>
 
           <div className="dashboard-row two">
-            <div className="dashboard-card full-width">
-              <h5>Class Routine</h5>
+            
+             
               <table className="routine-table">
-                <thead>
-                  <tr>
-                    <th>Time</th>
-                    <th>Sunday</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>8:30 AM</td>
-                    <td>
-                      <div className="routine-box">
-                        <p>ST5007CEM Web Dev</p>
-                        <p>Ayush Kaji Dangol</p>
-                        <p>8:30 AM - 10:00 AM</p>
-                      </div>
-                    </td>
-                    <td />
-                    <td />
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                </tbody>
+              <RoutineTable />
               </table>
-            </div>
+            
+       
 
-            <div className="dashboard-card half-width">
-              <h5>Student Engagement</h5>
-              <canvas id="engagementChart" />
-            </div>
+            
+          
+              <Chart />
+        
             <div className="dashboard-card half-width">
               <h5>Announcements</h5>
               <div className="announcement">

@@ -1,15 +1,15 @@
 import React from "react";
-// import DashboardLayout from "../layouts/DashboardLayout"; // Adjust path
-// import Dashnav from "../Components/Dashnav"; // Import Dashnav
-// import Sidebar from "../Components/Sidebar"; // Import Sidebar
+import Dashnav from "../Components/Dashnav";
+import Sidebar from "../Components/Sidebar";
 
-
-const StudentDashboard = () => {
+const Student = () => {
   return (
-    <DashboardLayout>
-      <StudentContent />
-    </DashboardLayout>
+    <>
+      <Sidebar />
+      <Dashnav role="student" />
+     
+    </>
   );
 };
 
-export default StudentDashboard;
+export default Student;
