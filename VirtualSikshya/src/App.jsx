@@ -39,11 +39,14 @@ const MainLayout = () => {
             {/* Define routes */}
             <Routes>
                 <Route path="/" element={<AuthForm />} />
+               
                 <Route path="/student-dashboard" element={<StudentDashboard />} />
                 <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
                 <Route path="/guest-dashboard" element={<GuestDashboard />} />
+               
             </Routes>
+
         </div>
     );
 };

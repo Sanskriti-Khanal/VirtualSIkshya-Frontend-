@@ -1,42 +1,121 @@
-import React, { useState, useContext } from 'react';
-import { DarkModeContext } from './Darkmode';
-import '../styles/Sidebar.css';
-import logo1 from '../assets/Images/logo1.png';
-import logo2 from '../assets/Images/logo2.png';
+import React, { useContext, useEffect, useState } from "react";
+import { DarkModeContext } from "./Darkmode";
+import { Link } from "react-router-dom";
+import "../styles/Sidebar.css";
+import logo1 from "../assets/Images/logo1.png";
+import logo2 from "../assets/Images/logo2.png";
 
 const Sidebar = () => {
+  
   const { isDarkMode } = useContext(DarkModeContext);
+  const [role, setRole] = useState("guest"); // Default to guest
 
+  useEffect(() => {
+    try {
+      const userData = JSON.parse(localStorage.getItem("user"));
+      if (userData?.role) {
+        setRole(userData.role);
+      }
+    } catch (error) {
+      console.error("Error parsing user data from localStorage:", error);
+    }
+  }, []);
+
+  // Determine dashboard route based on role
+  const dashboardRoutes = {
+    student: "/student-dashboard",
+    teacher: "/teacher-dashboard",
+    admin: "/admin-dashboard",
+    guest: "/guest-dashboard",
+  };
 
   return (
-    <>
-      <aside className="sidebar">
-        <div className="logo">
-          <img id="logo" src={isDarkMode ? logo2 : logo1} alt="Logo" />
-          <hr />
-        </div>
-        <ul className="sidebar-menu">
-          <li><a href="#"><i className="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-          <li><a href="#"><i className="fas fa-book"></i><span>Learnings</span></a></li>
-          <li><a href="#"><i className="fas fa-tasks"></i><span>My Assignments</span></a></li>
-          <li><a href="#"><i className="fas fa-clipboard-list"></i><span>Tasks</span></a></li>
-          <li><a href="#"><i className="fas fa-calendar-check"></i><span>Attendance</span></a></li>
-          <li><a href="#"><i className="fas fa-chart-line"></i><span>Results</span></a></li>
-          <li><a href="#"><i className="fas fa-calendar-alt"></i><span>Events</span></a></li>
-          <li>
-            <a href="#">
-              <i className="fas fa-clock"></i><span>Routine</span>
-            </a>
-          </li>
-          <li><a href="#"><i className="fas fa-question-circle"></i><span>Quiz</span></a></li>
-          <li><a href="#"><i className="fas fa-money-bill-wave"></i><span>Fees</span></a></li>
-          <hr />
-          <li><a href="#"><i className="fas fa-user"></i><span>Profile</span></a></li>
-          <li><a href="#" className="logout"><i className="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
-        </ul>
-      </aside>
-
-    </>
+    <aside className="sidebar">
+      <div className="logo">
+        <img
+          id="logo"
+          src={isDarkMode ? logo2 : logo1}
+          alt="Logo"
+          onError={(e) => (e.target.src = logo1)} // Fallback to logo1 if not found
+        />
+        <hr />
+      </div>
+      <ul className="sidebar-menu">
+        <li>
+          <Link to={dashboardRoutes[role] || "/guest-dashboard"}>
+            <i className="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/learning">
+            <i className="fas fa-book"></i>
+            <span>Learnings</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/assignments">
+            <i className="fas fa-tasks"></i>
+            <span>My Assignments</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/tasks">
+            <i className="fas fa-clipboard-list"></i>
+            <span>Tasks</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/attendance">
+            <i className="fas fa-calendar-check"></i>
+            <span>Attendance</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/results">
+            <i className="fas fa-chart-line"></i>
+            <span>Results</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/events">
+            <i className="fas fa-calendar-alt"></i>
+            <span>Events</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/routine">
+            <i className="fas fa-clock"></i>
+            <span>Routine</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/quiz">
+            <i className="fas fa-question-circle"></i>
+            <span>Quiz</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/fees">
+            <i className="fas fa-money-bill-wave"></i>
+            <span>Fees</span>
+          </Link>
+        </li>
+        <hr />
+        <li>
+          <Link to="/profile">
+            <i className="fas fa-user"></i>
+            <span>Profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/logout" className="logout">
+            <i className="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </Link>
+        </li>
+      </ul>
+    </aside>
   );
 };
 

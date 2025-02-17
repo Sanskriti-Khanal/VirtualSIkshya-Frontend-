@@ -128,8 +128,19 @@
   background: #ebf8ff;
   padding: 10px;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 8px;
+  font-size: large;
 }
+.announcement h6 {
+   font-size: 14px;
+   padding-top: 2px;
+   
+}
+.announcement p {
+  font-size: 12px;
+  
+}
+
 /* Dashboard Layout */
 .dashboard-container {
   display: flex;
@@ -531,4 +542,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* Responsive Design */
+@media (max-width: 992px) {
+  .dashboard-row {
+    flex-direction: column;
+  }
+
+  .dashboard-container .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .dashboard-main {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-card h2 {
+    font-size: 24px;
+  }
+
+  .dashboard-card {
+    padding: 15px;
+  }
 }
