@@ -103,11 +103,12 @@ const Sidebar = () => {
         </li>
         <hr />
         <li>
-          <Link to="/profile">
-            <i className="fas fa-user"></i>
-            <span>Profile</span>
-          </Link>
-        </li>
+         <Link to={role === "student" ? "/student-profile" : "/teacher-profile"}>
+           <i className="fas fa-user"></i>
+           <span>Profile</span>
+         </Link>
+         </li>
+
         <li>
           <Link to="/logout" className="logout">
             <i className="fas fa-sign-out-alt"></i>

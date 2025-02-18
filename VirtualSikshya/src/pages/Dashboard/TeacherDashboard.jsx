@@ -1,15 +1,15 @@
 import React, { useState, useContext } from "react";
-import { DarkModeContext } from '../Components/Darkmode';
-import Dashnav from "../Components/Dashnav";
-import Sidebar from "../Components/Sidebar";
+import { DarkModeContext } from '../../Components/Darkmode';
+import Dashnav from "../../Components/Dashnav";
+import Sidebar from "../../Components/Sidebar";
 import { Bar, Pie } from "react-chartjs-2";
 import Modal from "react-modal";
-import "../styles/teacherDashboard.css";
+import "../../styles/teacherDashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import RoutineTable from "../Components/RoutineTable";
-import Eventcalendar from "../Components/EventCalendar";
-import Chart from "../Components/chart";
+import RoutineTable from "../../Components/RoutineTable";
+import Eventcalendar from "../../Components/EventCalendar";
+import Chart from "../../Components/chart";
 
 // Import and register required Chart.js components
 import {

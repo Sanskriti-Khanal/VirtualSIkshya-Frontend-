@@ -3,14 +3,15 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import AuthForm from "./pages/Authform";
 import Dashboardside from "./Components/Sidebar";
 import Dashboardnav from "./Components/Dashnav";
-import StudentDashboard from "./pages/StudentDashboard";
-import TeacherDashboard from "./pages/TeacherDashboard";
-import AdminDashboard from "./pages/AdminDashboard";
-import GuestDashboard from "./pages/GuestDashboard";
+import StudentDashboard from "./pages/Dashboard/StudentDashboard";
+import TeacherDashboard from "./pages/Dashboard/TeacherDashboard";
+import AdminDashboard from "./pages/Dashboard/AdminDashboard";
+import GuestDashboard from "./pages/Dashboard/GuestDashboard";
 import { DarkModeProvider } from "./Components/Darkmode";
 import LearningDashboard from "./pages/Learning/TeacherLearn";
 import Teacherform from "./pages/form/teacher";
-
+import Studentform from "./pages/form/student";
+import TeacherFees from "./pages/Fees/Teacher";
 const App = () => {
     return (
         <DarkModeProvider>
@@ -47,7 +48,10 @@ const MainLayout = () => {
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
                 <Route path="/guest-dashboard" element={<GuestDashboard />} />
                 <Route path="/learning" element={<LearningDashboard />} />
-                <Route path="/profile" element={<Teacherform/>} />
+                <Route path="/student-profile" element={<Studentform />} />
+                <Route path="/teacher-profile" element={<Teacherform />} />
+                <Route path="/fees" element={<TeacherFees />} />
+
             </Routes>
 
         </div>

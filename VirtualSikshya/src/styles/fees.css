@@ -1,0 +1,158 @@
+/* Custom styles for Fee Management Component */
+
+/* Override Bootstrap default styles for a cleaner look */
+.table {
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    white-space: nowrap;
+  }
+  
+  .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1rem 1.25rem;
+  }
+  
+  /* Custom styling for status badges */
+  .badge {
+    font-weight: 600;
+    padding: 0.5em 0.75em;
+    border-radius: 0.25rem;
+  }
+  
+  /* Stats cards styling */
+  .bg-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3) !important;
+  }
+  
+  .bg-success {
+    background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+  }
+  
+  .bg-warning {
+    background: linear-gradient(135deg, #ffc107, #d39e00) !important;
+  }
+  
+  .bg-danger {
+    background: linear-gradient(135deg, #dc3545, #bd2130) !important;
+  }
+  
+  .card.text-white .card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+  
+  .card.text-white .display-4 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  
+  /* Button styling */
+  .btn-group .btn {
+    margin-right: 0.25rem;
+  }
+  
+  .btn-outline-primary:hover,
+  .btn-outline-danger:hover,
+  .btn-outline-success:hover,
+  .btn-outline-info:hover,
+  .btn-outline-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form styling in modal */
+  .modal-content {
+    border: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .d-flex.justify-content-between {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .d-flex.gap-2 {
+      justify-content: flex-start;
+    }
+    
+    .card.text-white .display-4 {
+      font-size: 1.75rem;
+    }
+    
+    .row.mt-4 > div {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  /* Animation for alerts */
+  .alert-danger {
+    animation: fadeIn 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Hover effects for table rows */
+  .table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+    cursor: pointer;
+  }
+  
+  /* Styling for export buttons */
+  .btn-outline-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Custom styling for dropdown */
+  .dropdown-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dropdown-menu {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+  }
+  
+  .dropdown-item:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
