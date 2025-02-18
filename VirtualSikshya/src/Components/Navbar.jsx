@@ -6,7 +6,7 @@ import '../styles/Navbar.css';
 import logoImage from '../assets/Images/navlogo.png'; // Ensure your logo image is in the correct path
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);//error in navbr
 
   return (
     <header className={`header-area ${isMenuOpen ? "header-sticky" : ""}`}>
