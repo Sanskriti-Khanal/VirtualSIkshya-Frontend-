@@ -6,7 +6,7 @@ const Admin = () => {
   return (
     <>
       <Sidebar />
-      <Dashnav role="admin" />
+      <Dashnav role = "admin" />
      
     </>
   );

@@ -8,6 +8,8 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import GuestDashboard from "./pages/GuestDashboard";
 import { DarkModeProvider } from "./Components/Darkmode";
+import LearningDashboard from "./pages/Learning/TeacherLearn";
+import Teacherform from "./pages/form/teacher";
 
 const App = () => {
     return (
@@ -44,7 +46,8 @@ const MainLayout = () => {
                 <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
                 <Route path="/guest-dashboard" element={<GuestDashboard />} />
-               
+                <Route path="/learning" element={<LearningDashboard />} />
+                <Route path="/profile" element={<Teacherform/>} />
             </Routes>
 
         </div>

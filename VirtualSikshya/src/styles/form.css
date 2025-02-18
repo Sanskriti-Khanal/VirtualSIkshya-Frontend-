@@ -1,0 +1,283 @@
+/* TeacherForm.css */
+.teacher-registration {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .teacher-registration h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+  }
+  
+  .form-section h3 {
+    color: #3498db;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+  
+  .education-inputs,
+  .batch-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .education-list,
+  .batch-list {
+    margin-top: 1rem;
+  }
+  
+  .education-item,
+  .batch-item {
+    background-color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e9ecef;
+  }
+  
+  .btn-add {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .btn-add:hover {
+    background-color: #27ae60;
+  }
+  
+  .btn-submit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .btn-submit:hover {
+    background-color: #2980b9;
+  }
+  
+  /* StudentForm.css */
+  .student-registration {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .student-registration h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .student-registration .form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+  }
+  
+  .student-registration .form-section h3 {
+    color: #e74c3c;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+  
+  .student-registration .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .student-registration .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  
+  .student-registration .form-group input,
+  .student-registration .form-group select,
+  .student-registration .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .student-registration .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .student-registration .form-group input:focus,
+  .student-registration .form-group select:focus,
+  .student-registration .form-group textarea:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+  }
+  
+  .student-registration .btn-submit {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .student-registration .btn-submit:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Responsive Styles for both forms */
+  @media screen and (max-width: 768px) {
+    .teacher-registration,
+    .student-registration {
+      margin: 1rem;
+      padding: 1rem;
+    }
+  
+    .form-section {
+      padding: 1rem;
+    }
+  
+    .education-inputs,
+    .batch-inputs {
+      grid-template-columns: 1fr;
+    }
+  
+    .btn-submit {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+  
+  /* Form Validation Styles */
+  .form-group input:invalid,
+  .form-group select:invalid,
+  .form-group textarea:invalid {
+    border-color: #dc3545;
+  }
+  
+  .form-group input:invalid:focus,
+  .form-group select:invalid:focus,
+  .form-group textarea:invalid:focus {
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+  }
+  
+  /* Loading State Styles */
+  .btn-submit:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  /* Success Message Styles */
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Error Message Styles */
+  .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Required Field Indicator */
+  .required-field::after {
+    content: '*';
+    color: #dc3545;
+    margin-left: 4px;
+  }
+  
+  /* Tooltip Styles */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  
