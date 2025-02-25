@@ -17,12 +17,25 @@
   
   /* Container */
   .container-fluid {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 100%; /* Increased width */
+    max-width: 1600px; /* More space */
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0 auto;
+}
+/* Adjust column widths to make cards bigger */
+@media (min-width: 768px) {
+  .col-md-3 {
+      flex: 0 0 30%;
+      max-width: 30%;
   }
+}
+@media (min-width: 992px) {
+  .col-md-3 {
+      flex: 0 0 32%;
+      max-width: 32%;
+  }
+}
   
   .mt-4 {
     margin-top: 1.5rem !important;
@@ -120,26 +133,33 @@
   }
   
   /* Cards */
-  .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
+ /* Cards */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 280px;
+  max-width: 100%;
+  word-wrap: break-word;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
   .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   }
   
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.5rem;
+}
+
   .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
@@ -164,7 +184,19 @@
     margin-top: 0;
     margin-bottom: 1rem;
   }
+  /* Payment Cards */
+.card.text-white {
+  min-height: 180px; /* Ensure equal height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
   
+
+.card.text-white .display-4 {
+  font-size: 2.5rem; /* Increase font size for better visibility */
+}
+
   /* Buttons */
   .btn {
     display: inline-block;
@@ -736,3 +768,4 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #a1a8b3;
   }
+  

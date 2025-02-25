@@ -13,6 +13,7 @@ import Teacherform from "./pages/form/teacher";
 import Studentform from "./pages/form/student";
 import TeacherFees from "./pages/Fees/Teacher";
 import Quiz from "./pages/Quiz/quiz";
+import ProfileDashboard from "./pages/Profile/profile";
 const App = () => {
     return (
         <DarkModeProvider>
@@ -53,6 +54,7 @@ const MainLayout = () => {
                 <Route path="/teacher-profile" element={<Teacherform />} />
                 <Route path="/fees" element={<TeacherFees />} />
                 <Route path="/quiz" element={<Quiz />} />
+                <Route path="/profile" element={<ProfileDashboard />} />
 
             </Routes>
 
