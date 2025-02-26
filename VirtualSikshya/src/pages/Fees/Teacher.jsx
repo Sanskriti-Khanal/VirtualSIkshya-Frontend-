@@ -1,7 +1,7 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
-import Sidebar from "../../Components/Sidebar";
-import Teacherfees from "../../Components/fees/teacherfees"; // Fix import
+import Sidebar from "../../Components/Sidebar/TeacherSidebar";
+import Teacherfees from "../../Components/fees/adminfees"; // Fix import
 
 const Teacherfeespage = () => {
   return (

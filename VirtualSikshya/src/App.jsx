@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import AuthForm from "./pages/Authform";
-import Dashboardside from "./Components/Sidebar";
+import Dashboardside from "./Components/Sidebar/TeacherSidebar";
 import Dashboardnav from "./Components/Dashnav";
 import StudentDashboard from "./pages/Dashboard/StudentDashboard";
 import TeacherDashboard from "./pages/Dashboard/TeacherDashboard";
@@ -12,7 +12,7 @@ import Teacherform from "./pages/form/teacher";
 import Studentform from "./pages/form/student";
 import TeacherFees from "./pages/Fees/Teacher";
 import Quiz from "./pages/Quiz/quiz";
-import ProfileDashboard from "./pages/Profile/profile";
+import ProfileDashboard from "./Components/form/profile";
 
 
 

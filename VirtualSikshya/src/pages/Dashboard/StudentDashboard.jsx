@@ -1,6 +1,6 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
-import Sidebar from "../../Components/Sidebar";
+import Sidebar from "../../Components/Sidebar/StudentSidebar";
 import { Bar, Pie } from 'recharts';
 import { BarChart, PieChart, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { BookOpen, Calendar, Clock, Award, CheckCircle, TrendingUp, User, Bell } from 'lucide-react';

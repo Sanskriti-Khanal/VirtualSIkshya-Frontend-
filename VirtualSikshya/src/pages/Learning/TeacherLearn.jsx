@@ -1,7 +1,7 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
-import Sidebar from "../../Components/Sidebar";
-import Learning from "../../Components/Learning";
+import Sidebar from "../../Components/Sidebar/TeacherSidebar";
+import Learning from "../../Components/Learning/TeacherLearning";
 
 const Learn = () => {
   return (

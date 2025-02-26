@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { DarkModeContext } from "./Darkmode";
+import { DarkModeContext } from "../Darkmode";
 import { Link } from "react-router-dom";
 import "../styles/Sidebar.css";
 import logo1 from "../assets/Images/logo1.png";
@@ -26,7 +26,7 @@ const Sidebar = () => {
     student: "/student-dashboard",
     teacher: "/teacher-dashboard",
     admin: "/admin-dashboard",
-    guest: "/guest-dashboard",
+    
   };
 
   return (
@@ -42,7 +42,7 @@ const Sidebar = () => {
       </div>
       <ul className="sidebar-menu">
         <li>
-          <Link to={dashboardRoutes[role] || "/guest-dashboard"}>
+          <Link to={dashboardRoutes[role] || "/student-dashboard"}>
             <i className="fas fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </Link>

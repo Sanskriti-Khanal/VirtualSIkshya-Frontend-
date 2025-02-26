@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { DarkModeContext } from '../../Components/Darkmode';
 import Dashnav from "../../Components/Dashnav";
-import Sidebar from "../../Components/Sidebar";
+import Sidebar from "../../Components/Sidebar/TeacherSidebar";
 import { Bar, Pie } from "react-chartjs-2";
 import Modal from "react-modal";
 import "../../styles/teacherDashboard.css";

@@ -1,6 +1,6 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
-import Sidebar from "../../Components/Sidebar";
+import Sidebar from "../../Components/Sidebar/StudentSidebar";
 import Studentform from "../../Components/form/Studentform"; // Fix import
 
 const studentprofile = () => {
