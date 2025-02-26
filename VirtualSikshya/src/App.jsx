@@ -14,6 +14,8 @@ import Studentform from "./pages/form/student";
 import TeacherFees from "./pages/Fees/Teacher";
 import Quiz from "./pages/Quiz/quiz";
 import ProfileDashboard from "./pages/Profile/profile";
+import studentass from "./pages/Assignment/Student";
+
 
 const App = () => {
     return (
@@ -45,7 +47,6 @@ const MainLayout = () => {
             {/* Define routes */}
             <Routes>
                 <Route path="/" element={<AuthForm />} />
-               
                 <Route path="/student-dashboard" element={<StudentDashboard />} />
                 <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
@@ -57,6 +58,8 @@ const MainLayout = () => {
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/profile" element={<ProfileDashboard />} />
                 <Route path="/ GuestDashboard" element={< GuestDashboard />} />
+                <Route path="/assignments" element={<studentass/>} />
+                
 
             </Routes>
 

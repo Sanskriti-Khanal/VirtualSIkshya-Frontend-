@@ -1,0 +1,131 @@
+/* App.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: #f5f7fa;
+  }
+  
+  .app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .assignments-container {
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .assignments-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eaedf0;
+  }
+  
+  .assignments-header h2 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .view-all {
+    color: #4a6cf7;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  
+  .view-all:hover {
+    color: #2d4ed8;
+    text-decoration: underline;
+  }
+  
+  .assignments-list {
+    width: 100%;
+  }
+  
+  .assignment-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 16px 24px;
+    border-bottom: 1px solid #eaedf0;
+  }
+  
+  .assignment-row.header {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .assignment-cell {
+    display: flex;
+    align-items: center;
+  }
+  
+  .assignment-title {
+    font-weight: 500;
+    color: #2d3748;
+  }
+  
+  .priority-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+  }
+  
+  .priority-high {
+    background-color: #fee2e2;
+    color: #ef4444;
+  }
+  
+  .priority-medium {
+    background-color: #fef3c7;
+    color: #f59e0b;
+  }
+  
+  .priority-low {
+    background-color: #dcfce7;
+    color: #10b981;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .assignment-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 16px;
+    }
+    
+    .assignment-row.header {
+      display: none;
+    }
+    
+    .assignment-cell {
+      padding: 4px 0;
+    }
+    
+    .assignment-cell:before {
+      content: attr(data-label);
+      font-weight: 600;
+      margin-right: 8px;
+    }
+  }
