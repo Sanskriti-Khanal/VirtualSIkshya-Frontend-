@@ -1,6 +1,6 @@
 // App.js
 import React, { useState } from 'react';
-import './App.css';
+import '../../styles/stdassignment.css';
 
 function studentass() {
   const [assignments, setAssignments] = useState([

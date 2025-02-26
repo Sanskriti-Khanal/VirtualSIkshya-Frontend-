@@ -42,63 +42,63 @@ const Sidebar = () => {
       </div>
       <ul className="sidebar-menu">
         <li>
-          <Link to={dashboardRoutes[role] || "/student-dashboard"}>
+          <Link to="/teacher-dashboard">
             <i className="fas fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </Link>
         </li>
         <li>
-          <Link to="/learning">
+          <Link to="/teacher-learning">
             <i className="fas fa-book"></i>
             <span>Learnings</span>
           </Link>
         </li>
         <li>
-          <Link to="/assignments">
+          <Link to="/teacher-assignments">
             <i className="fas fa-tasks"></i>
             <span>My Assignments</span>
           </Link>
         </li>
     
         <li>
-          <Link to="/attendance">
+          <Link to="/teacherattendance">
             <i className="fas fa-calendar-check"></i>
             <span>Attendance</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/results">
             <i className="fas fa-chart-line"></i>
             <span>Results</span>
           </Link>
-        </li>
+        </li> */}
         <li> 
-          <Link to="/events">
+          <Link to="/teacher-events">
             <i className="fas fa-calendar-alt"></i>
             <span>Events</span>
           </Link>
         </li>
         <li>
-          <Link to="/routine">
+          <Link to="/teacher-routine">
             <i className="fas fa-clock"></i>
             <span>Routine</span>
           </Link>
         </li>
         <li>
-          <Link to="/quiz">
+          <Link to="/teacher-quiz">
             <i className="fas fa-question-circle"></i>
             <span>Quiz</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/fees">
             <i className="fas fa-money-bill-wave"></i>
             <span>Fees</span>
           </Link>
-        </li>
+        </li> */}
         <hr />
         <li>
-         <Link to={role === "student" ? "/student-profile" : "/teacher-profile"}>
+         <Link to="teacher-profile">
            <i className="fas fa-user"></i>
            <span>Profile</span>
          </Link>

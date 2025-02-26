@@ -65,12 +65,12 @@ const Sidebar = () => {
             <span>Attendance</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/student-results">
             <i className="fas fa-chart-line"></i>
             <span>Results</span>
           </Link>
-        </li>
+        </li> */}
         <li> 
           <Link to="/student-events">
             <i className="fas fa-calendar-alt"></i>

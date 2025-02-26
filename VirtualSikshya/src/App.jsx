@@ -7,7 +7,32 @@ import StudentDashboard from "./pages/Dashboard/StudentDashboard";
 import TeacherDashboard from "./pages/Dashboard/TeacherDashboard";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard";
 import { DarkModeProvider } from "./Components/Darkmode";
-import LearningDashboard from "./pages/Learning/TeacherLearn";
+
+// LearningDashboard
+import TeacherLearningDashboard from "./pages/Learning/TeacherLearn";
+import StudentLearningDashboard from "./pages/Learning/StudentLearn";
+import AdminLearningDashboard from "./pages/Learning/AdminLearn";
+
+//Assignment
+// import TeacherAssignment from "./pages/Assignment/Teacherassignment";
+import StudentAssignment from "./pages/Assignment/Studentassignment";
+
+//Attendance
+// import TeacherAttendance from "./pages/Attendance/Teacherattendance";
+// import StudentAttendance from "./pages/Attendance/Studentattendance";
+
+//Events
+// import TeacherEvents from "./pages/Events/TeacherEvents";
+// import StudentEvents from "./pages/Events/StudentEvents";
+// import AdminEvents from "./pages/Events/AdminEvents";
+
+//Routine
+// import TeacherRoutine from "./pages/Routine/TeacherRoutine";
+// import StudentRoutine from "./pages/Routine/StudentRoutine";
+// import AdminRoutine from "./pages/Routine/AdminRoutine";
+
+
+
 import Teacherform from "./pages/form/teacher";
 import Studentform from "./pages/form/student";
 import TeacherFees from "./pages/Fees/Teacher";
@@ -49,7 +74,28 @@ const MainLayout = () => {
                 <Route path="/student-dashboard" element={<StudentDashboard />} />
                 <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                <Route path="/learning" element={<LearningDashboard />} />
+
+                {/* learning */}
+                <Route path="/teacher-learning" element={<TeacherLearningDashboard />} />
+                <Route path="/student-learning" element={<StudentLearningDashboard />} />
+                <Route path="/admin-learning" element={<AdminLearningDashboard />} />
+
+                {/* Assignment */}
+               {/*  <Route path="/teacher-assignment" element={<TeacherAssignment />} /> */}
+                <Route path="/student-assignment" element={<StudentAssignment />} />
+
+                {/* Attendance */}
+                {/* <Route path="/student-attendance" element={<StudentAttendance />} />
+                <Route path="/teacher-attendance" element={<TeacherAttendance />} /> */}
+
+                {/* Events */}
+
+
+                {/* Routine */}
+
+
+
+
                 <Route path="/student-profile" element={<Studentform />} />
                 <Route path="/teacher-profile" element={<Teacherform />} />
                 <Route path="/fees" element={<TeacherFees />} />
