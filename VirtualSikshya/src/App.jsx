@@ -6,7 +6,6 @@ import Dashboardnav from "./Components/Dashnav";
 import StudentDashboard from "./pages/Dashboard/StudentDashboard";
 import TeacherDashboard from "./pages/Dashboard/TeacherDashboard";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard";
-import GuestDashboard from "./pages/Dashboard/GuestDashboard";
 import { DarkModeProvider } from "./Components/Darkmode";
 import LearningDashboard from "./pages/Learning/TeacherLearn";
 import Teacherform from "./pages/form/teacher";
@@ -14,7 +13,7 @@ import Studentform from "./pages/form/student";
 import TeacherFees from "./pages/Fees/Teacher";
 import Quiz from "./pages/Quiz/quiz";
 import ProfileDashboard from "./pages/Profile/profile";
-import studentass from "./pages/Assignment/Student";
+
 
 
 const App = () => {
@@ -50,15 +49,14 @@ const MainLayout = () => {
                 <Route path="/student-dashboard" element={<StudentDashboard />} />
                 <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                <Route path="/guest-dashboard" element={<GuestDashboard />} />
                 <Route path="/learning" element={<LearningDashboard />} />
                 <Route path="/student-profile" element={<Studentform />} />
                 <Route path="/teacher-profile" element={<Teacherform />} />
                 <Route path="/fees" element={<TeacherFees />} />
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/profile" element={<ProfileDashboard />} />
-                <Route path="/ GuestDashboard" element={< GuestDashboard />} />
-                <Route path="/assignments" element={<studentass/>} />
+            
+              
                 
 
             </Routes>
