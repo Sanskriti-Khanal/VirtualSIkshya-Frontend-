@@ -53,18 +53,13 @@ const Sidebar = () => {
             <span>Learnings</span>
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link to="/assignments">
             <i className="fas fa-tasks"></i>
             <span>My Assignments</span>
           </Link>
         </li>
-        <li>
-          <Link to="/tasks">
-            <i className="fas fa-clipboard-list"></i>
-            <span>Tasks</span>
-          </Link>
-        </li>
+    
         <li>
           <Link to="/attendance">
             <i className="fas fa-calendar-check"></i>
@@ -76,7 +71,7 @@ const Sidebar = () => {
             <i className="fas fa-chart-line"></i>
             <span>Results</span>
           </Link>
-        </li>*/}
+        </li>
         <li> 
           <Link to="/events">
             <i className="fas fa-calendar-alt"></i>

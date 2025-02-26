@@ -507,33 +507,7 @@ const Student = () => {
         {/* Right Column */}
         <div style={styles.column}>
           {/* Profile Card */}
-          <div style={styles.profileCard}>
-            <div style={styles.profileHeader}>
-              <div style={styles.profileIconContainer}>
-                <User style={styles.profileIcon} />
-              </div>
-              <h3 style={styles.profileName}>Alex Johnson</h3>
-              <p style={styles.profileId}>Student ID: ST-2022-011</p>
-            </div>
-            <div style={styles.profileDetails}>
-              <div style={styles.profileRow}>
-                <span style={styles.profileLabel}>Program</span>
-                <span style={styles.profileValue}>Computer Science</span>
-              </div>
-              <div style={styles.profileRow}>
-                <span style={styles.profileLabel}>Year</span>
-                <span style={styles.profileValue}>2nd Year</span>
-              </div>
-              <div style={styles.profileRow}>
-                <span style={styles.profileLabel}>Status</span>
-                <span style={styles.greenText}>Active</span>
-              </div>
-              <div style={{...styles.profileRow, ...styles.profileRowLast}}>
-                <span style={styles.profileLabel}>Advisor</span>
-                <span style={styles.profileValue}>Dr. Smith</span>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Attendance Chart */}
           <div style={styles.card}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "../../styles/ExamDahboard.css";
-
+import Dashnav from "../../Components/Dashnav";
+import Sidebar from "../../Components/Sidebar";
 // Importing SVG icons as React components
 const ChartIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -75,8 +76,10 @@ const Admin = () => {
     : null;
 
   return (
+   
     <div className="enhanced-dashboard">
-      
+       <Sidebar />
+       <Dashnav role="admin" />
       
       {/* Statistics Cards */}
       <div className="stats-grid">
