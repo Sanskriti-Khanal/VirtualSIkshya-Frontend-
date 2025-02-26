@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ProfileDashboard.css';
+import '../../styles/ProfileDashboard.css';
 
 const ProfileSelection = () => {
   const [profiles, setProfiles] = useState([]);

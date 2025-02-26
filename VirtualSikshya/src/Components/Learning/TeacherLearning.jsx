@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../styles/learning.css";
+import "../../styles/learning.css";
 
 const CourseContent = ({ userRole }) => {
   const [selectedModule, setSelectedModule] = useState(null);

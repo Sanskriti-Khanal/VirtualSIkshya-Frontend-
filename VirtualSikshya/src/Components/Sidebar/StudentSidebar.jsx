@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../Darkmode";
 import { Link } from "react-router-dom";
-import "../styles/Sidebar.css";
-import logo1 from "../assets/Images/logo1.png";
-import logo2 from "../assets/Images/logo2.png";
+import "../../styles/Sidebar.css";
+import logo1 from "../../assets/Images/logo1.png";
+import logo2 from "../../assets/Images/logo2.png";
 
 const Sidebar = () => {
   
