@@ -31,7 +31,9 @@ import TeacherRoutine from "./pages/Routine/teacherroutine";
 import StudentRoutine from "./pages/Routine/studentroutine";
 import AdminRoutine from "./pages/Routine/adminroutine";
 
-
+//Notices
+import Notices from "./pages/Notices/adminnotics";
+import Notification from "./pages/Notices/teacherstd";
 
 import Teacherform from "./pages/form/teacher";
 import Studentform from "./pages/form/student";
@@ -98,6 +100,10 @@ const MainLayout = () => {
                 <Route path="/teacher-routine" element={<TeacherRoutine />} />
                 <Route path="/student-routine" element={<StudentRoutine />} />
                 <Route path="/admin-routine" element={<AdminRoutine />} />
+
+                {/* Notification */}
+                <Route path="/admin-notices" element={<Notices />} />
+                <Route path="/notification" element={<Notification />} />
 
 
 

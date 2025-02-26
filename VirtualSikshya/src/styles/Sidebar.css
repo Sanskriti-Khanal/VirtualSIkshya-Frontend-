@@ -317,3 +317,63 @@ body.dark-mode {
   }
 }
 
+/* Notification Bell Icon */
+.notifications {
+  background: none;
+  border: none;
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.notification-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Notification Count */
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  width: 250px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.notification-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.notice-item:hover {
+  background: #f5f5f5;
+}
+
+.no-notices {
+  text-align: center;
+  padding: 10px;
+  color: #555;
+}
