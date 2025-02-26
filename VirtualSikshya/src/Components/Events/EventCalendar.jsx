@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../styles/teacherDashboard.css";
+import "../../styles/teacherDashboard.css";
 
 Modal.setAppElement("#root");
 
@@ -17,6 +17,11 @@ const EventCalendar = () => {
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [newEventTitle, setNewEventTitle] = useState("");
   const [newEventDescription, setNewEventDescription] = useState("");
+
+  // Inline styles
+  const containerStyle = {
+    marginTop: "100px",
+  };
 
   // Function to handle date selection
   const handleDateClick = (date) => {
@@ -41,7 +46,7 @@ const EventCalendar = () => {
   };
 
   return (
-    <div className="dashboard-card">
+    <div className="dashboard-card" style={containerStyle}>
       <h5>Calendar</h5>
       <DatePicker
         selected={selectedDate}

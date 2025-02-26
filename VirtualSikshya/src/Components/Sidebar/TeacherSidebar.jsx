@@ -54,7 +54,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/teacher-assignments">
+          <Link to="/teacher-assignment">
             <i className="fas fa-tasks"></i>
             <span>My Assignments</span>
           </Link>

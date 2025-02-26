@@ -14,22 +14,22 @@ import StudentLearningDashboard from "./pages/Learning/StudentLearn";
 import AdminLearningDashboard from "./pages/Learning/AdminLearn";
 
 //Assignment
-// import TeacherAssignment from "./pages/Assignment/Teacherassignment";
-import StudentAssignment from "./pages/Assignment/Studentassignment";
+import TeacherAssignment from "./pages/Assignment/Teacherassignment";
+import StudentAssignment from "./pages/Assignment/Studentassignment";//need to modify
 
 //Attendance
-// import TeacherAttendance from "./pages/Attendance/Teacherattendance";
-// import StudentAttendance from "./pages/Attendance/Studentattendance";
+import TeacherAttendance from "./pages/Attndance/Teacheratt";
+import StudentAttendance from "./pages/Attndance/Studentatt";
 
 //Events
-// import TeacherEvents from "./pages/Events/TeacherEvents";
-// import StudentEvents from "./pages/Events/StudentEvents";
-// import AdminEvents from "./pages/Events/AdminEvents";
+import TeacherEvents from "./pages/Event/teacherevent";
+import StudentEvents from "./pages/Event/studentevent";
+import AdminEvents from "./pages/Event/adminevents";
 
 //Routine
-// import TeacherRoutine from "./pages/Routine/TeacherRoutine";
-// import StudentRoutine from "./pages/Routine/StudentRoutine";
-// import AdminRoutine from "./pages/Routine/AdminRoutine";
+import TeacherRoutine from "./pages/Routine/teacherroutine";
+import StudentRoutine from "./pages/Routine/studentroutine";
+import AdminRoutine from "./pages/Routine/adminroutine";
 
 
 
@@ -78,20 +78,26 @@ const MainLayout = () => {
                 {/* learning */}
                 <Route path="/teacher-learning" element={<TeacherLearningDashboard />} />
                 <Route path="/student-learning" element={<StudentLearningDashboard />} />
-                <Route path="/admin-learning" element={<AdminLearningDashboard />} />
+                <Route path="/admin-learnings" element={<AdminLearningDashboard />} />
 
                 {/* Assignment */}
-               {/*  <Route path="/teacher-assignment" element={<TeacherAssignment />} /> */}
+                <Route path="/teacher-assignment" element={<TeacherAssignment />} />
                 <Route path="/student-assignment" element={<StudentAssignment />} />
 
                 {/* Attendance */}
-                {/* <Route path="/student-attendance" element={<StudentAttendance />} />
-                <Route path="/teacher-attendance" element={<TeacherAttendance />} /> */}
+                <Route path="/student-attendance" element={<StudentAttendance />} />
+                <Route path="/teacher-attendance" element={<TeacherAttendance />} /> 
 
                 {/* Events */}
+                <Route path="/admin-events" element={<AdminEvents />} />
+                <Route path="/teacher-events" element={<TeacherEvents />} />
+                <Route path="/student-events" element={<StudentEvents />} />
 
 
                 {/* Routine */}
+                <Route path="/teacher-routine" element={<TeacherRoutine />} />
+                <Route path="/student-routine" element={<StudentRoutine />} />
+                <Route path="/admin-routine" element={<AdminRoutine />} />
 
 
 

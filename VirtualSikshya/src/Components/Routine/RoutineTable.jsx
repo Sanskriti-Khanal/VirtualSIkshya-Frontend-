@@ -15,7 +15,7 @@ import "@syncfusion/ej2-inputs/styles/material.css";
 import "@syncfusion/ej2-navigations/styles/material.css";
 import "@syncfusion/ej2-popups/styles/material.css";
 import "@syncfusion/ej2-react-schedule/styles/material.css";
-import "../styles/teacherDashboard.css"; // Ensure styling is applied
+ /// / Ensure styling is applied
 
 // 🔹 Register the Syncfusion License (Use your actual key from Syncfusion)
 registerLicense("Ngo9BigBOggjHTQxAR8/V1NMaF1cWGhKYVJ1WmFZfVtgdVVMZFpbRXZPIiBoS35Rc0VhWH5ccnBSRGhcVEVz");

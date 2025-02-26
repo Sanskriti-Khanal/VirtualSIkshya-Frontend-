@@ -53,7 +53,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/assignments">
+          <Link to="/student-assignment">
             <i className="fas fa-tasks"></i>
             <span>My Assignments</span>
           </Link>
@@ -89,12 +89,12 @@ const Sidebar = () => {
             <span>Quiz</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/student-fees">
             <i className="fas fa-money-bill-wave"></i>
             <span>Fees</span>
           </Link>
-        </li>
+        </li> */}
         <hr />
         <li>
          <Link to="/student-profile">

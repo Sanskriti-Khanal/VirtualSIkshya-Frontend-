@@ -1,18 +1,17 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
 import Sidebar from "../../Components/Sidebar/StudentSidebar";
-import Learning from "../../Components/Learning/StudentLearning";
+import Attendance from "../../Components/Attendance/Studentattendance";
 
-const Learn = () => {
+const  attendanceRecords = () => {
   return (
     <>
       <Sidebar />
       <Dashnav role="student" />
-
-      <Learning />
+      <Attendance />
     </>
   );
 };
 
-export default Learn;
+export default attendanceRecords;
 

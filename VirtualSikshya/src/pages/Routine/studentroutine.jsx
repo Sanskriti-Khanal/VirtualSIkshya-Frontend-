@@ -1,18 +1,18 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
 import Sidebar from "../../Components/Sidebar/StudentSidebar";
-import Learning from "../../Components/Learning/StudentLearning";
+import Routinetable from "../../Components/Routine/StudentRoutine";
 
-const Learn = () => {
+const Routine = () => {
   return (
     <>
       <Sidebar />
       <Dashnav role="student" />
-
-      <Learning />
+      
+      <Routinetable />
     </>
   );
 };
 
-export default Learn;
+export default Routine;
 

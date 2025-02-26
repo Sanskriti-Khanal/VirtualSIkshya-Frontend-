@@ -1,18 +1,17 @@
 import React from "react";
 import Dashnav from "../../Components/Dashnav";
 import Sidebar from "../../Components/Sidebar/StudentSidebar";
-import Learning from "../../Components/Learning/StudentLearning";
+import Event from "../../Components/Events/studenteve";
 
-const Learn = () => {
+const Eventcalendar = () => {
   return (
     <>
       <Sidebar />
       <Dashnav role="student" />
-
-      <Learning />
+      <Event />
     </>
   );
 };
 
-export default Learn;
+export default Eventcalendar;
 

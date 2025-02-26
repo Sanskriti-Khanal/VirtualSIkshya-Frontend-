@@ -312,3 +312,12 @@ textarea.input-field {
     border-radius: 4px;
     resize: vertical; /* Allow vertical resizing */
 }
+
+.badge {
+    background-color: #28a745; /* Green */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 10px;
+}

@@ -7,8 +7,8 @@ import Modal from "react-modal";
 import "../../styles/teacherDashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import RoutineTable from "../../Components/RoutineTable";
-import Eventcalendar from "../../Components/EventCalendar";
+import RoutineTable from "../../Components/Routine/RoutineTable";
+import Eventcalendar from "../../Components/Events/Teachereve";
 import Chart from "../../Components/chart";
 
 // Import and register required Chart.js components
