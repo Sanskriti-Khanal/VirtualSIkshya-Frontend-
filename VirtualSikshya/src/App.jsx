@@ -35,11 +35,15 @@ import AdminRoutine from "./pages/Routine/adminroutine";
 import Notices from "./pages/Notices/adminnotics";
 import Notification from "./pages/Notices/teacherstd";
 
+//Profile
 import Teacherform from "./pages/form/teacher";
 import Studentform from "./pages/form/student";
-import TeacherFees from "./pages/Fees/Teacher";
-import Quiz from "./pages/Quiz/quiz";
 import ProfileDashboard from "./Components/form/profile";
+ 
+//Quiz
+import Quiz from "./pages/Quiz/quiz";
+import Teacherquiz from "./pages/Quiz/teacherquiz"
+
 
 
 
@@ -105,14 +109,15 @@ const MainLayout = () => {
                 <Route path="/admin-notices" element={<Notices />} />
                 <Route path="/notification" element={<Notification />} />
 
-
-
-
+                {/* Profile */}
                 <Route path="/student-profile" element={<Studentform />} />
                 <Route path="/teacher-profile" element={<Teacherform />} />
-                <Route path="/fees" element={<TeacherFees />} />
-                <Route path="/quiz" element={<Quiz />} />
-                <Route path="/profile" element={<ProfileDashboard />} />
+                <Route path="/admin-profile" element={<ProfileDashboard />} />
+
+                {/* Quiz */}
+                <Route path="/student-quiz" element={<Quiz />} />
+                <Route path="/teacher-quiz" element={<Teacherquiz />} />
+                
             
               
                 

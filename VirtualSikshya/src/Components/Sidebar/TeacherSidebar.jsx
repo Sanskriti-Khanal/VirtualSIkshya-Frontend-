@@ -61,7 +61,7 @@ const Sidebar = () => {
         </li>
     
         <li>
-          <Link to="/teacherattendance">
+          <Link to="/teacher-attendance">
             <i className="fas fa-calendar-check"></i>
             <span>Attendance</span>
           </Link>

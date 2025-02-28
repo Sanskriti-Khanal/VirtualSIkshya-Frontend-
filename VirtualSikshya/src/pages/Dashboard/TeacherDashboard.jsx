@@ -107,7 +107,7 @@ const TeacherDashboard = () => {
       <div className="dashboard-main">
         <Dashnav role="teacher" />
         <div className="dashboard-content">
-          <div className="dashboard-row one">
+          <div className="dashboard-row">
             <div className="stats-card" onClick={() => showModal("studentStats")}>
               <h5>Students</h5>
               <h2>26,288</h2>
