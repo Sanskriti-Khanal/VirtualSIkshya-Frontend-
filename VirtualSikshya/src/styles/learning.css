@@ -1,4 +1,4 @@
-/* learning.css */
+/* 
 .learning-portal {
     display: flex;
     font-family: 'Arial', sans-serif;
@@ -311,13 +311,96 @@ textarea.input-field {
     border: 1px solid #ced4da;
     border-radius: 4px;
     resize: vertical; /* Allow vertical resizing */
-}
 
-.badge {
-    background-color: #28a745; /* Green */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Main container */
+  .main-container {
+    display: flex;
+    height: 100vh;
+    margin-top: 50px;
+    width: 1200px;
+
+
+  }
+  
+  /* Sidebar for courses */
+  .course-sidebar {
+    width: 20%;
+    background-color: #375a5c;
+    padding: 20px;
     color: white;
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    margin-left: 10px;
-}
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .course-item {
+    padding: 15px;
+    margin: 5px 0;
+    background-color: #2f4d4e;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .course-item:hover {
+    background-color: #466b6d;
+  }
+  
+  /* Lesson panel */
+  .lesson-panel {
+    width: 30%;
+    background-color: #a7c3a5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .lesson-header {
+    background-color: #999;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .lesson-list {
+    margin-top: 10px;
+  }
+  
+  .lesson-item {
+    padding: 15px;
+    margin: 5px 0;
+    background-color: #8eb58f;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .lesson-item:hover {
+    background-color: #7aa97a;
+  }
+  
+  /* Lesson content */
+  .lesson-content {
+    width: 50%;
+    background-color: #eee8d5;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .lesson-content h2 {
+    font-size: 22px;
+  }
+  
+  .lesson-content p {
+    font-size: 16px;
+    line-height: 1.5;
+  }  

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../Darkmode";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/Sidebar.css";
 import logo1 from "../../assets/Images/logo1.png";
 import logo2 from "../../assets/Images/logo2.png";
 
 const Sidebar = () => {
-  
+
   const { isDarkMode } = useContext(DarkModeContext);
   const [role, setRole] = useState("guest"); // Default to guest
 
@@ -26,8 +26,16 @@ const Sidebar = () => {
     student: "/student-dashboard",
     teacher: "/teacher-dashboard",
     admin: "/admin-dashboard",
-    
+
   };
+  const navigate = useNavigate(); // ✅ Define navigate
+  const handleLogout = () => {
+    console.log("clicked")
+    localStorage.removeItem("user"); // ✅ Clear user data
+    navigate("/"); // ✅ Redirect to login page
+  };
+
+
 
   return (
     <aside className="sidebar">
@@ -54,12 +62,24 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/teacher-learning">
+            <i className="fas fa-book"></i>
+            <span>Lessons</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/teacher-learning">
+            <i className="fas fa-book"></i>
+            <span>Add Lessons</span>
+          </Link>
+        </li>
+        <li>
           <Link to="/teacher-assignment">
             <i className="fas fa-tasks"></i>
             <span>My Assignments</span>
           </Link>
         </li>
-    
+
         <li>
           <Link to="/teacher-attendance">
             <i className="fas fa-calendar-check"></i>
@@ -72,7 +92,7 @@ const Sidebar = () => {
             <span>Results</span>
           </Link>
         </li> */}
-        <li> 
+        <li>
           <Link to="/teacher-events">
             <i className="fas fa-calendar-alt"></i>
             <span>Events</span>
@@ -98,17 +118,20 @@ const Sidebar = () => {
         </li> */}
         <hr />
         <li>
-         <Link to="teacher-profile">
-           <i className="fas fa-user"></i>
-           <span>Profile</span>
-         </Link>
-         </li>
+          <Link to="teacher-profile">
+            <i className="fas fa-user"></i>
+            <span>Profile</span>
+          </Link>
+        </li>
 
         <li>
-          <Link to="/logout" className="logout">
-            <i className="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-          </Link>
+          <li>
+            <button onClick={handleLogout} className="logout">
+              <i className="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          </li>
+
         </li>
       </ul>
     </aside>

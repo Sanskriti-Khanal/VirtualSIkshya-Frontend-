@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import "../../styles/Notification.css";
 
 const AdminNoticeUpload = () => {
     const [title, setTitle] = useState("");

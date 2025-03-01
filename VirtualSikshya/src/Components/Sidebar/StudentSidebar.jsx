@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../Darkmode";
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import "../../styles/Sidebar.css";
 import logo1 from "../../assets/Images/logo1.png";
 import logo2 from "../../assets/Images/logo2.png";
@@ -27,6 +27,13 @@ const Sidebar = () => {
    
     
   };
+ const navigate = useNavigate(); // ✅ Define navigate
+  const handleLogout = () => {
+    console.log("clicked")
+    localStorage.removeItem("user"); // ✅ Clear user data
+    navigate("/"); // ✅ Redirect to login page
+  };
+
 
   return (
     <aside className="sidebar">
@@ -104,10 +111,10 @@ const Sidebar = () => {
          </li>
 
         <li>
-          <Link to="/logout" className="logout">
-            <i className="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-          </Link>
+        <button onClick={handleLogout} className="logout">
+              <i className="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
         </li>
       </ul>
     </aside>

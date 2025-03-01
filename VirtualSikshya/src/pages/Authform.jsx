@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { userAPI } from "../api/api"; // ✅ Centralized API calls
 
 import bgImage from '../assets/Images/Bg.png';
@@ -12,41 +11,57 @@ import { faFacebookF, faGooglePlusG, faLinkedinIn } from "@fortawesome/free-bran
 const AuthForm = () => {
     const [isRightPanelActive, setIsRightPanelActive] = useState(false);
     const [formData, setFormData] = useState({ email: "", password: "" });
-    const [registerData, setRegisterData] = useState({ name: "", email: "", password: "", role: "Student" }); // ✅ Default role
+    const [registerData, setRegisterData] = useState({ name: "", email: "", password: "", role: "Student" });
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    // 🔹 Check if user is already logged in on page load
     useEffect(() => {
-        const query = new URLSearchParams(window.location.search);
-        const token = query.get("token");
-
-        if (token) {
-            localStorage.setItem("token", token);
-            navigate("/guest-dashboard");
+        const userData = JSON.parse(localStorage.getItem("user"));
+        if (userData?.token) {
+            console.log("🔍 Retrieved from localStorage:", userData);
+            redirectUser(userData.role);
         }
-    }, [navigate]);
+    }, []);
 
-    // Toggle between login and signup forms
+    // 🔹 Function to redirect user based on role
+    const redirectUser = (role) => {
+        switch (role) {
+            case "Student":
+                navigate("/student-dashboard");
+                break;
+            case "Teacher":
+                navigate("/teacher-dashboard");
+                break;
+            case "Admin":
+                navigate("/admin-dashboard");
+                break;
+            default:
+                navigate("/guest-dashboard");
+        }
+    };
+
+    // 🔹 Toggle between login and signup forms
     const handleToggle = () => {
         setIsRightPanelActive(!isRightPanelActive);
     };
 
-    // Handle input changes for Login
+    // 🔹 Handle input changes for Login
     const handleLoginChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Handle input changes for Registration
+    // 🔹 Handle input changes for Registration
     const handleRegisterChange = (e) => {
         setRegisterData({ ...registerData, [e.target.name]: e.target.value });
     };
 
-    // Handle Role Selection for Registration
+    // 🔹 Handle Role Selection for Registration
     const handleRoleChange = (e) => {
         setRegisterData({ ...registerData, role: e.target.value });
     };
 
-    // Handle Login
+    // 🔹 Handle Login
     const handleLogin = async (e) => {
         e.preventDefault();
         setError("");
@@ -57,49 +72,38 @@ const AuthForm = () => {
 
             const { token, role, user_id, name } = response.data;
 
-            if (!name) {
-                console.error("❌ Error: User name missing in API response");
-                window.alert("Login failed: No user name received");
+            if (!role) {
+                setError("Login failed: No role received from server.");
                 return;
             }
 
-            const userData = { token, role, user_id, name };
+            localStorage.setItem("user", JSON.stringify({ token, role, user_id, name }));
 
-            localStorage.setItem("user", JSON.stringify(userData));
-            console.log("✅ Stored User in localStorage:", JSON.parse(localStorage.getItem("user")));
+            console.log("✅ Stored in localStorage:", JSON.parse(localStorage.getItem("user")));
 
-            // Redirect user based on role
-            switch (role) {
-                case "Student":
-                    navigate("/student-dashboard");
-                    break;
-                case "Teacher":
-                    navigate("/teacher-dashboard");
-                    break;
-                case "Admin":
-                    navigate("/admin-dashboard");
-                    break;
-                default:
-                    navigate("/guest-dashboard");
-            }
+            redirectUser(role);
         } catch (err) {
-            console.error("❌ Login Error:", err);
-            setError("Incorrect credentials. Please try again.");
+            console.error("❌ Login Error:", err.response?.data?.message || err.message);
+            setError(err.response?.data?.message || "Login failed. Please check your details.");
         }
     };
 
-    // Handle Registration
+    // 🔹 Handle Registration
     const handleRegister = async (e) => {
         e.preventDefault();
         setError("");
 
         try {
-            await userAPI.register(registerData);
-            alert("Registration successful! You can now log in.");
-            setIsRightPanelActive(false);
+            const response = await userAPI.register(registerData);
+            console.log("✅ Registration Successful:", response.data);
+
+            alert("Registration successful! Redirecting...");
+
+            // Auto-login after registration
+            handleLogin(e);
         } catch (err) {
-            console.error("Registration Error:", err);
-            setError("Registration failed. Please check your details.");
+            console.error("❌ Registration Error:", err);
+            setError(err.response?.data?.message || "Registration failed. Please check your details.");
         }
     };
 
