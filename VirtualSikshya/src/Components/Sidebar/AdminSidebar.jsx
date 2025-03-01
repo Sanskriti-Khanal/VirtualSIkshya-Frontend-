@@ -68,7 +68,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/admin-learnings">
+          <Link to="/admin-course">
             <i className="fas fa-book"></i>
             <span>Add Courses</span>
           </Link>

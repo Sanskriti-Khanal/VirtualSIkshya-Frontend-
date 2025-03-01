@@ -1,0 +1,114 @@
+/* General Styles */
+.course-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 70px;
+}
+
+.course-header {
+  background: #3d5a5b;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.course-list {
+  margin: 20px 0;
+}
+
+.course-item {
+  background: #a7c3a5;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-info {
+  text-align: left;
+}
+
+.course-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon, .delete-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+
+/* Edit Mode */
+.edit-course input {
+  width: 80%;
+  padding: 5px;
+  margin: 5px;
+}
+
+.save-edit-btn {
+  background: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.save-edit-btn:hover {
+  background: #218838;
+}
+
+/* Add Course Form */
+.add-course-form {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin: 10px 0;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-course-btn {
+  background: #3d5a5b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.add-course-btn:hover {
+  background: #2d4a4b;
+}

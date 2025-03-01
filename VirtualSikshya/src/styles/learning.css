@@ -329,6 +329,7 @@ body {
     width: 1200px;
 
 
+
   }
   
   /* Sidebar for courses */
@@ -390,8 +391,8 @@ body {
   
   /* Lesson content */
   .lesson-content {
-    width: 50%;
-    background-color: #eee8d5;
+    width: 1200px;
+    background-color: #f0f0f0;
     padding: 20px;
     overflow-y: auto;
   }
@@ -404,3 +405,6 @@ body {
     font-size: 16px;
     line-height: 1.5;
   }  
+  .edit-icon{
+    font-size:25px;
+  }

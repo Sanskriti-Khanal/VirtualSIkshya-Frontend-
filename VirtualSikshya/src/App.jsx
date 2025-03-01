@@ -44,7 +44,9 @@ import ProfileDashboard from "./Components/form/profile";
 import Quiz from "./pages/Quiz/quiz";
 import Teacherquiz from "./pages/Quiz/teacherquiz"
 
-
+//CourseCrud
+import Addcourse from "./pages/course/admincourse";
+import AddLessons from "./pages/course/teacherlesson";
 
 
 const App = () => {
@@ -117,6 +119,10 @@ const MainLayout = () => {
                 {/* Quiz */}
                 <Route path="/student-quiz" element={<Quiz />} />
                 <Route path="/teacher-quiz" element={<Teacherquiz />} />
+
+                {/* CourseCrud */}
+              <Route path="/admin-course" element={<Addcourse />} />
+             <Route path="/Teacher-Lessons" element={<AddLessons />} /> 
                 
             
               

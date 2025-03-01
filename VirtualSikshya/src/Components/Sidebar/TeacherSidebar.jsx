@@ -61,16 +61,11 @@ const Sidebar = () => {
             <span>Learnings</span>
           </Link>
         </li>
+        
         <li>
-          <Link to="/teacher-learning">
+          <Link to="/Teacher-Lessons">
             <i className="fas fa-book"></i>
             <span>Lessons</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/teacher-learning">
-            <i className="fas fa-book"></i>
-            <span>Add Lessons</span>
           </Link>
         </li>
         <li>
