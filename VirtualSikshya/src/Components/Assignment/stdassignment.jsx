@@ -1,219 +1,160 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import '../../styles/studentassign.css';
 
-function AssignmentsManager({ teacher }) {
+
+function StudentAssignments() {
   const [assignments, setAssignments] = useState([]);
-  const [createMode, setCreateMode] = useState(false);
+  const [selectedAssignment, setSelectedAssignment] = useState(null);
+  const [submissionFile, setSubmissionFile] = useState(null);
+  const [submissions, setSubmissions] = useState({});
+  const [studentEmail, setStudentEmail] = useState('');
 
-  // Assignment form states
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [deadlineDate, setDeadlineDate] = useState("");
-  const [deadlineTime, setDeadlineTime] = useState("");
-  const [file, setFile] = useState(null);
-  const [department, setDepartment] = useState("");
-  const [errors, setErrors] = useState({});
-
-  // Load saved assignments from localStorage on mount
+  // Load assignments from localStorage
   useEffect(() => {
-    const savedAssignments = localStorage.getItem("assignments");
-    if (savedAssignments) {
-      setAssignments(JSON.parse(savedAssignments));
-    }
+    const savedAssignments = JSON.parse(localStorage.getItem('assignments')) || [];
+    setAssignments(savedAssignments);
   }, []);
 
-  // Save assignments to localStorage whenever they change
+  // Load submissions from localStorage
   useEffect(() => {
-    localStorage.setItem("assignments", JSON.stringify(assignments));
-  }, [assignments]);
+    const savedSubmissions = JSON.parse(localStorage.getItem('submissions')) || {};
+    setSubmissions(savedSubmissions);
+  }, []);
 
-  // Department options
-  const departmentOptions = [
-    { value: "computing", label: "Computing" },
-    { value: "ai", label: "Artificial Intelligence" },
-    { value: "ethics", label: "Ethics" },
-    { value: "mathematics", label: "Mathematics" },
-    { value: "physics", label: "Physics" },
-  ];
-
-  // Get today's date for deadline restriction
-  const today = new Date().toISOString().split("T")[0];
-
-  // Validate assignment creation form
-  const validateForm = () => {
-    const newErrors = {};
-    if (!title.trim()) newErrors.title = "Title is required";
-    if (!description.trim()) newErrors.description = "Description is required";
-    if (!deadlineDate) newErrors.deadlineDate = "Deadline date is required";
-    if (!deadlineTime) newErrors.deadlineTime = "Deadline time is required";
-    if (!department) newErrors.department = "Department is required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  // Save submissions to localStorage
+  useEffect(() => {
+    localStorage.setItem('submissions', JSON.stringify(submissions));
+  }, [submissions]);
 
   // Handle file selection
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
-      setFile(e.target.files[0]);
+      setSubmissionFile(e.target.files[0]);
     }
   };
 
-  // Create a new assignment
-  const handleCreateAssignment = (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
+  // Handle assignment submission
+  const handleSubmit = (assignmentId) => {
+    if (!submissionFile) {
+      toast.error('Please select a file before submitting.');
+      return;
+    }
+    if (!studentEmail.trim()) {
+      toast.error('Please enter your email.');
+      return;
+    }
 
-    const deadlineDateTime = new Date(`${deadlineDate}T${deadlineTime}`);
-    let fileUrl = file ? URL.createObjectURL(file) : null;
-
-    const newAssignment = {
-      id: Date.now().toString(),
-      title,
-      description,
-      deadline: deadlineDateTime.toISOString(),
-      fileUrl,
-      fileName: file ? file.name : null,
-      department,
-      teacherId: teacher.id,
-      createdDate: new Date().toISOString(),
+    const newSubmission = {
+      fileUrl: URL.createObjectURL(submissionFile),
+      fileName: submissionFile.name,
+      submittedDate: new Date().toISOString(),
+      status: 'Submitted ✅',
+      studentEmail
     };
 
-    setAssignments([...assignments, newAssignment]);
+    setSubmissions((prev) => ({
+      ...prev,
+      [assignmentId]: newSubmission
+    }));
 
-    // Reset form
-    setTitle("");
-    setDescription("");
-    setDeadlineDate("");
-    setDeadlineTime("");
-    setFile(null);
-    setDepartment("");
-    setCreateMode(false);
+    toast.success('Assignment submitted successfully ✅');
+    setSubmissionFile(null);
+    setStudentEmail('');
   };
 
-  // Toggle Create Mode
-  const toggleCreateMode = () => {
-    setCreateMode((prev) => !prev);
+  // Calculate days remaining
+  const calculateDaysRemaining = (deadline) => {
+    const deadlineDate = new Date(deadline);
+    const today = new Date();
+    const diffTime = deadlineDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 0) return 'Expired ❌';
+    if (diffDays === 0) return 'Due Today ⚠️';
+    return `${diffDays} Days Left ⏳`;
   };
 
   return (
-    <div className="assignments-manager">
-      <div className="manager-header">
-        <h2>Assignment Management</h2>
-        <button className={`btn-action ${createMode ? "active" : ""}`} onClick={toggleCreateMode}>
-          {createMode ? "Cancel" : "Create Assignment"}
-        </button>
-      </div>
+    <div className="student-assignments-container">
+      <h2>📚 Available Assignments</h2>
 
-      {/* Create Assignment Form */}
-      {createMode && (
-        <div className="assignment-creator">
-          <h3>Create New Assignment</h3>
-          <form onSubmit={handleCreateAssignment}>
-            <div className="form-group">
-              <label htmlFor="title">Assignment Title</label>
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter assignment title"
-                className={errors.title ? "error" : ""}
-              />
-              {errors.title && <span className="error-message">{errors.title}</span>}
-            </div>
+      {assignments.length === 0 ? (
+        <p className="no-data">No assignments available.</p>
+      ) : (
+        assignments.map((assignment) => (
+          <div key={assignment.id} className={`assignment-card ${submissions[assignment.id] ? 'submitted' : ''}`}>
+            <h4>{assignment.title}</h4>
+            <p>{assignment.description}</p>
+            <p><strong>📅 Due:</strong> {assignment.deadline} <span className="deadline">{calculateDaysRemaining(assignment.deadline)}</span></p>
 
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Enter assignment description"
-                rows="5"
-                className={errors.description ? "error" : ""}
-              ></textarea>
-              {errors.description && <span className="error-message">{errors.description}</span>}
-            </div>
+            {assignment.file && (
+              <a href={assignment.file} target="_blank" rel="noopener noreferrer">
+                📂 {assignment.fileName}
+              </a>
+            )}
 
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="deadlineDate">Deadline Date</label>
-                <input
-                  type="date"
-                  id="deadlineDate"
-                  value={deadlineDate}
-                  onChange={(e) => setDeadlineDate(e.target.value)}
-                  min={today}
-                  className={errors.deadlineDate ? "error" : ""}
-                />
-                {errors.deadlineDate && <span className="error-message">{errors.deadlineDate}</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="deadlineTime">Deadline Time</label>
-                <input
-                  type="time"
-                  id="deadlineTime"
-                  value={deadlineTime}
-                  onChange={(e) => setDeadlineTime(e.target.value)}
-                  className={errors.deadlineTime ? "error" : ""}
-                />
-                {errors.deadlineTime && <span className="error-message">{errors.deadlineTime}</span>}
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="department">Department</label>
-              <select
-                id="department"
-                value={department}
-                onChange={(e) => setDepartment(e.target.value)}
-                className={errors.department ? "error" : ""}
+            {submissions[assignment.id] ? (
+              <button className="submitted-btn" disabled>Submitted ✅</button>
+            ) : (
+              <button 
+                className="view-btn" 
+                onClick={() => setSelectedAssignment(assignment)}
               >
-                <option value="">Select Department</option>
-                {departmentOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              {errors.department && <span className="error-message">{errors.department}</span>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="file">Assignment File (Optional)</label>
-              <input type="file" id="file" onChange={handleFileChange} />
-            </div>
-
-            <button type="submit" className="btn-create">Submit Assignment</button>
-          </form>
-        </div>
+                View & Submit
+              </button>
+            )}
+          </div>
+        ))
       )}
 
-      {/* Assignment List */}
-      <div className="assignment-list">
-        {assignments.length === 0 ? (
-          <p>No assignments created yet.</p>
-        ) : (
-          assignments.map((assignment) => (
-            <div key={assignment.id} className="assignment-item">
-              <h3>{assignment.title}</h3>
-              <p>{assignment.description}</p>
-              <p><strong>Deadline:</strong> {new Date(assignment.deadline).toLocaleString()}</p>
-              {assignment.fileUrl && (
-                <p>
-                  <a href={assignment.fileUrl} target="_blank" rel="noopener noreferrer">
-                    View Assignment File
-                  </a>
-                </p>
-              )}
+      {/* Submission Modal */}
+      {selectedAssignment && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-btn" onClick={() => setSelectedAssignment(null)}>✖</button>
+            <h3>{selectedAssignment.title}</h3>
+            <p>{selectedAssignment.description}</p>
+            <p><strong>📅 Deadline:</strong> {selectedAssignment.deadline} <span className="deadline">{calculateDaysRemaining(selectedAssignment.deadline)}</span></p>
+
+            {selectedAssignment.file && (
+              <a href={selectedAssignment.file} target="_blank" rel="noopener noreferrer">
+                📂 {selectedAssignment.fileName}
+              </a>
+            )}
+
+            <div className="submission-section">
+              <h4>Submit Your Assignment</h4>
+              <input 
+                type="email" 
+                placeholder="Enter Your Email" 
+                value={studentEmail} 
+                onChange={(e) => setStudentEmail(e.target.value)}
+              />
+              <input type="file" onChange={handleFileChange} />
+              {submissionFile && <p className="file-name">📎 {submissionFile.name}</p>}
+              <button className="submit-btn" onClick={() => handleSubmit(selectedAssignment.id)}>
+                Submit Assignment
+              </button>
             </div>
-          ))
-        )}
-      </div>
+
+            {/* Show submission status */}
+            {submissions[selectedAssignment.id] && (
+              <div className="submission-status">
+                <h4>Your Submission</h4>
+                <p><strong>📂 File:</strong> {submissions[selectedAssignment.id].fileName}</p>
+                <p><strong>📅 Submitted On:</strong> {new Date(submissions[selectedAssignment.id].submittedDate).toLocaleDateString()}</p>
+                <p><strong>🔖 Status:</strong> {submissions[selectedAssignment.id].status}</p>
+                <a href={submissions[selectedAssignment.id].fileUrl} target="_blank" rel="noopener noreferrer">
+                  🔗 View Submission
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-export default AssignmentsManager;
+export default StudentAssignments;

@@ -1,81 +1,118 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import "../../styles/Notification.css";
+import "../../styles/notice.css";
 
 const AdminNoticeUpload = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [notices, setNotices] = useState([]); // Store notices locally
+    const [notices, setNotices] = useState([]);
+
+    // Default notices (Without Date)
+    const defaultNotices = [
+        {
+            id: 1,
+            title: "🎥 Video Link for Testing",
+            description: "Check SP5000COM - Android Development Week 9 for the source code and testing video link.",
+        },
+        {
+            id: 2,
+            title: "📢 Holiday Notice",
+            description: "The college will remain closed on Friday.",
+        },
+        {
+            id: 3,
+            title: "📝 Assignment Submission",
+            description: "Reminder: Submit your final project by Monday.",
+        },
+    ];
+
+    // Load notices from localStorage or set default notices if empty
+    useEffect(() => {
+        const storedNotices = localStorage.getItem("notices");
+        if (storedNotices && JSON.parse(storedNotices).length > 0) {
+            setNotices(JSON.parse(storedNotices));
+        } else {
+            setNotices(defaultNotices);
+            localStorage.setItem("notices", JSON.stringify(defaultNotices)); // Store defaults
+        }
+    }, []);
+
+    // Save notices to localStorage whenever they change
+    useEffect(() => {
+        localStorage.setItem("notices", JSON.stringify(notices));
+    }, [notices]);
 
     const handleUpload = (e) => {
         e.preventDefault();
-        if (!title || !description) {
+        
+        if (!title.trim() || !description.trim()) {
             toast.error("Title and description are required!");
             return;
         }
 
-        const newNotice = { id: notices.length + 1, title, description };
-        setNotices([...notices, newNotice]); // Add notice to the list
+        const newNotice = { 
+            id: Date.now(), // Unique ID
+            title: title.trim(), 
+            description: description.trim(),
+        };
+
+        setNotices([...notices, newNotice]);
         setTitle("");
         setDescription("");
-        toast.success("Notice uploaded successfully");
+        toast.success("Notice uploaded successfully ✅");
     };
 
     const deleteNotice = (id) => {
-        setNotices(notices.filter((notice) => notice.id !== id));
-        toast.info("Notice deleted");
+        if (window.confirm("Are you sure you want to delete this notice?")) {
+            const updatedNotices = notices.filter((notice) => notice.id !== id);
+            setNotices(updatedNotices);
+            toast.info("Notice deleted 🗑️");
+
+            if (updatedNotices.length === 0) {
+                localStorage.removeItem("notices"); // Remove empty storage entry
+            }
+        }
     };
 
     return (
-        <div className="max-w-lg mx-auto p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">📢 Upload Notice</h2>
-            
-            <form onSubmit={handleUpload} className="space-y-4">
+        <div className="admin-notice-container">
+            <h2 className="title">📢 Upload Notice</h2>
+
+            <form onSubmit={handleUpload} className="notice-form">
                 <input 
                     type="text" 
                     placeholder="Notice Title" 
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full p-3 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all duration-200 outline-none shadow-sm hover:shadow-md"
+                    className="input-field"
                     required
                 />
                 <textarea
                     placeholder="Notice Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full p-3 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all duration-200 outline-none shadow-sm hover:shadow-md"
+                    className="textarea-field"
                     rows="4"
                     required
                 />
-                <button 
-                    type="submit" 
-                    className="w-full p-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
-                >
+                <button type="submit" className="upload-button">
                     📤 Upload Notice
                 </button>
             </form>
 
             {/* Display Uploaded Notices */}
             {notices.length > 0 && (
-                <div className="mt-6">
-                    <h3 className="text-xl font-semibold text-blue-800 mb-2">📝 Uploaded Notices</h3>
-                    <div className="space-y-3">
-                        {notices.map((notice) => (
-                            <div 
-                                key={notice.id} 
-                                className="bg-white p-4 rounded-lg shadow-md border border-gray-200 transition-transform duration-200 hover:scale-[1.02]"
-                            >
-                                <h4 className="text-lg font-semibold text-gray-800">{notice.title}</h4>
-                                <p className="text-gray-600">{notice.description}</p>
-                                <button 
-                                    className="mt-2 text-red-600 font-medium hover:text-red-700 transition-all duration-200 flex items-center gap-2"
-                                    onClick={() => deleteNotice(notice.id)}
-                                >
-                                    ❌ Delete
-                                </button>
-                            </div>
-                        ))}
-                    </div>
+                <div className="notices-list">
+                    <h3 className="notices-title">📝 Uploaded Notices</h3>
+                    {notices.map((notice) => (
+                        <div key={notice.id} className="notice-item">
+                            <h4>{notice.title}</h4>
+                            <p>{notice.description}</p>
+                            <button className="delete-button" onClick={() => deleteNotice(notice.id)}>
+                                ❌ Delete
+                            </button>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>

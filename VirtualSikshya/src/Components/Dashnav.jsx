@@ -7,11 +7,8 @@ import profileImage from "../assets/Images/profile.jpg";
 const Dashnav = ({ role }) => {
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
     const [userName, setUserName] = useState("User");
-    const [notices, setNotices] = useState([
-        { id: 1, title: "Exam Schedule Released", description: "Final exam schedule is now available.", createdAt: new Date() },
-        { id: 2, title: "Holiday Notice", description: "The college will remain closed on Friday.", createdAt: new Date() },
-    ]);
-    const [showDropdown, setShowDropdown] = useState(false); // Toggle the notice dropdown
+    const [notices, setNotices] = useState([]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Single state for notification dropdown
 
     // Fetch user name from localStorage
     useEffect(() => {
@@ -26,6 +23,26 @@ const Dashnav = ({ role }) => {
                 console.error("Error parsing user data:", error);
             }
         }
+    }, []);
+
+    // Fetch notifications dynamically (you can replace this with an API call)
+    useEffect(() => {
+        setNotices([
+            { id: 1, title: "🎥 Video Link for Testing", description: "Check SP5000COM - Android Development Week 9 for the source code and testing video link.", createdAt: new Date() },
+            { id: 2, title: "📢 Holiday Notice", description: "The college will remain closed on Friday.", createdAt: new Date() },
+            { id: 3, title: "📝 Assignment Submission", description: "Reminder: Submit your final project by Monday.", createdAt: new Date() },
+        ]);
+    }, []);
+
+    // Close dropdown if user clicks outside
+    useEffect(() => {
+        const closeDropdown = (e) => {
+            if (!e.target.closest(".notification-wrapper")) {
+                setIsDropdownOpen(false);
+            }
+        };
+        document.addEventListener("click", closeDropdown);
+        return () => document.removeEventListener("click", closeDropdown);
     }, []);
 
     // Determine greeting message dynamically
@@ -52,7 +69,10 @@ const Dashnav = ({ role }) => {
                 <div className="notification-wrapper">
                     <button 
                         className="notifications" 
-                        onClick={() => setShowDropdown(!showDropdown)}
+                        onClick={(e) => {
+                            e.stopPropagation(); // Prevent closing immediately
+                            setIsDropdownOpen(!isDropdownOpen);
+                        }}
                     >
                         <i className="fas fa-bell"></i>
                         {notices.length > 0 && (
@@ -61,7 +81,7 @@ const Dashnav = ({ role }) => {
                     </button>
 
                     {/* Notification Dropdown */}
-                    {showDropdown && (
+                    {isDropdownOpen && (
                         <div className="notification-dropdown">
                             <div className="dropdown-header">📢 Notifications</div>
                             {notices.length === 0 ? (
@@ -80,7 +100,7 @@ const Dashnav = ({ role }) => {
                             <div className="dropdown-footer">
                                 <button 
                                     className="close-dropdown" 
-                                    onClick={() => setShowDropdown(false)}
+                                    onClick={() => setIsDropdownOpen(false)}
                                 >
                                     Close
                                 </button>
