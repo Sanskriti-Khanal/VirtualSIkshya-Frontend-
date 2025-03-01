@@ -19,7 +19,7 @@ import StudentAssignment from "./pages/Assignment/Studentassignment";//need to m
 
 //Attendance
 import TeacherAttendance from "./pages/Attndance/Teacheratt";
-import StudentAttendance from "./pages/Attndance/Studentatt";
+// import StudentAttendance from "./pages/Attndance/Studentatt";
 
 //Events
 import TeacherEvents from "./pages/Event/teacherevent";
@@ -38,7 +38,7 @@ import Notification from "./pages/Notices/teacherstd";
 //Profile
 import Teacherform from "./pages/form/teacher";
 import Studentform from "./pages/form/student";
-import ProfileDashboard from "./Components/form/profile";
+import ProfileDashboard from "./pages/form/admin";
  
 //Quiz
 import Quiz from "./pages/Quiz/quiz";
@@ -93,7 +93,7 @@ const MainLayout = () => {
                 <Route path="/student-assignment" element={<StudentAssignment />} />
 
                 {/* Attendance */}
-                <Route path="/student-attendance" element={<StudentAttendance />} />
+                {/* <Route path="/student-attendance" element={<StudentAttendance />} /> */}
                 <Route path="/teacher-attendance" element={<TeacherAttendance />} /> 
 
                 {/* Events */}

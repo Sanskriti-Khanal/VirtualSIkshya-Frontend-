@@ -1,43 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/ProfileDashboard.css';
+import React, { useState, useEffect } from "react";
+import "../../styles/ProfileDashboard.css";
 
 const ProfileSelection = () => {
   const [profiles, setProfiles] = useState([]);
-  const [selectedFaculty, setSelectedFaculty] = useState('all');
+  const [selectedFaculty, setSelectedFaculty] = useState("all");
   const [showForm, setShowForm] = useState(false);
-  const [formType, setFormType] = useState('student');
+  const [formType, setFormType] = useState("student");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    faculty: 'ethical',
-    id: '',
-    specialization: '',
-    course: '',
-    year: '',
-    avatar: '',
+    name: "",
+    email: "",
+    faculty: "ethical",
+    id: "",
+    specialization: "",
+    course: "",
+    year: "",
   });
 
+  // Load mock profiles on component mount
   useEffect(() => {
-    const fetchProfiles = async () => {
-      const mockProfiles = [
-        { id: 1, type: 'student', name: 'John Doe', faculty: 'computing', year: '3', course: 'Computer Science', avatar: '👨‍🎓' },
-        { id: 2, type: 'student', name: 'Jane Smith', faculty: 'ai', year: '2', course: 'Artificial Intelligence', avatar: '👩‍🎓' },
-        { id: 3, type: 'teacher', name: 'Dr. Brown', faculty: 'ethical', specialization: 'Ethics in Technology', avatar: '👨‍🏫' },
-        { id: 4, type: 'teacher', name: 'Prof. Zhang', faculty: 'computing', specialization: 'Software Engineering', avatar: '👩‍🏫' },
-        { id: 5, type: 'student', name: 'Alex Johnson', faculty: 'ethical', year: '1', course: 'Ethics and Computing', avatar: '🧑‍🎓' },
-        { id: 6, type: 'teacher', name: 'Dr. Garcia', faculty: 'ai', specialization: 'Machine Learning', avatar: '👨‍🏫' },
-      ];
-      setProfiles(mockProfiles);
-    };
-    fetchProfiles();
+    const mockProfiles = [
+      { id: 1, type: "student", name: "Ram Khatri", faculty: "computing", year: "3", course: "Computer Science", avatar: "👨‍🎓" },
+      { id: 2, type: "student", name: "Sita Sharma", faculty: "ai", year: "2", course: "Artificial Intelligence", avatar: "👩‍🎓" },
+      { id: 3, type: "teacher", name: "Dr. Bhandari", faculty: "ethical", specialization: "Ethics in Technology", avatar: "👨‍🏫" },
+      { id: 4, type: "teacher", name: "Prof. Shrestha", faculty: "computing", specialization: "Software Engineering", avatar: "👩‍🏫" },
+      { id: 5, type: "student", name: "Bikash Thapa", faculty: "ethical", year: "1", course: "Ethics and Computing", avatar: "🧑‍🎓" },
+      { id: 6, type: "teacher", name: "Dr. Mahato", faculty: "ai", specialization: "Machine Learning", avatar: "👨‍🏫" },
+    ];
+    setProfiles(mockProfiles);
   }, []);
 
+  // Handle faculty filter change
   const handleFacultyChange = (e) => setSelectedFaculty(e.target.value);
 
+  // Handle form input changes
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const newProfile = {
@@ -45,31 +45,44 @@ const ProfileSelection = () => {
       type: formType,
       name: formData.name,
       faculty: formData.faculty,
-      avatar: formType === 'student' ? '🧑‍🎓' : '🧑‍🏫',
-      ...(formType === 'student' ? { year: formData.year, course: formData.course } : { specialization: formData.specialization }),
+      avatar: formType === "student" ? "🧑‍🎓" : "👨‍🏫",
+      ...(formType === "student"
+        ? { year: formData.year, course: formData.course }
+        : { specialization: formData.specialization }),
     };
     setProfiles([...profiles, newProfile]);
     setShowForm(false);
     resetForm();
   };
 
+  // Reset form fields
   const resetForm = () => {
-    setFormData({ name: '', email: '', faculty: 'ethical', id: '', specialization: '', course: '', year: '' });
+    setFormData({ name: "", email: "", faculty: "ethical", id: "", specialization: "", course: "", year: "" });
   };
 
-  const filteredProfiles = profiles.filter(profile => selectedFaculty === 'all' || profile.faculty === selectedFaculty);
-  const studentProfiles = filteredProfiles.filter(profile => profile.type === 'student');
-  const teacherProfiles = filteredProfiles.filter(profile => profile.type === 'teacher');
+  // Delete profile
+  const deleteProfile = (id) => {
+    if (window.confirm("Are you sure you want to delete this profile?")) {
+      setProfiles(profiles.filter((profile) => profile.id !== id));
+    }
+  };
+
+  // Filter profiles based on selected faculty
+  const filteredProfiles = profiles.filter(
+    (profile) => selectedFaculty === "all" || profile.faculty === selectedFaculty
+  );
 
   return (
-    <div className="profile-selection-container">
-      <div className="header-section">
-        <h1>Profile Selection</h1>
-        <p className="tagline">Choose your academic identity</p>
+    <div className="profile-container">
+      <div className="header">
+        <h1>👥 Profile Management</h1>
+      
       </div>
-      <div className="controls-section">
-        <div className="faculty-filter">
-          <span>Filter by Faculty:</span>
+
+      {/* Filter and Add Button */}
+      <div className="controls">
+        <div className="filter">
+          <label>Filter by Faculty:</label>
           <select value={selectedFaculty} onChange={handleFacultyChange}>
             <option value="all">All Faculties</option>
             <option value="ethical">Ethical</option>
@@ -77,10 +90,12 @@ const ProfileSelection = () => {
             <option value="ai">AI</option>
           </select>
         </div>
-        <button onClick={() => setShowForm(!showForm)}>
-          {showForm ? 'Cancel' : 'Add New'}
+        <button className="add-button" onClick={() => setShowForm(!showForm)}>
+          {showForm ? "Cancel" : "➕ Add New"}
         </button>
       </div>
+
+      {/* Form for Adding Profiles */}
       {showForm && (
         <form onSubmit={handleFormSubmit} className="profile-form">
           <input type="text" name="name" value={formData.name} onChange={handleFormChange} placeholder="Full Name" required />
@@ -90,33 +105,46 @@ const ProfileSelection = () => {
             <option value="computing">Computing</option>
             <option value="ai">AI</option>
           </select>
-          {formType === 'student' ? (
+          <select name="type" value={formType} onChange={(e) => setFormType(e.target.value)}>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+          {formType === "student" ? (
             <>
-              <input type="text" name="id" value={formData.id} onChange={handleFormChange} placeholder="Student ID" required />
               <input type="text" name="course" value={formData.course} onChange={handleFormChange} placeholder="Course" required />
               <input type="text" name="year" value={formData.year} onChange={handleFormChange} placeholder="Year" required />
             </>
           ) : (
-            <>
-              <input type="text" name="id" value={formData.id} onChange={handleFormChange} placeholder="Teacher ID" required />
-              <input type="text" name="specialization" value={formData.specialization} onChange={handleFormChange} placeholder="Specialization" required />
-            </>
+            <input type="text" name="specialization" value={formData.specialization} onChange={handleFormChange} placeholder="Specialization" required />
           )}
-          <button type="submit">Create Profile</button>
+          <button type="submit">✅ Create Profile</button>
         </form>
       )}
-      <div className="profiles-container">
-        <h2>Students</h2>
+
+      {/* Profile Display */}
+      <div className="profiles">
+        <h2>🎓 Students</h2>
         <ul>
-          {studentProfiles.map(profile => (
-            <li key={profile.id}>{profile.avatar} {profile.name} - {profile.course}</li>
-          ))}
+          {filteredProfiles
+            .filter((p) => p.type === "student")
+            .map((profile) => (
+              <li key={profile.id}>
+                {profile.avatar} {profile.name} - {profile.course}
+                <button className="delete-button" onClick={() => deleteProfile(profile.id)}>❌</button>
+              </li>
+            ))}
         </ul>
-        <h2>Teachers</h2>
+
+        <h2>🏫 Teachers</h2>
         <ul>
-          {teacherProfiles.map(profile => (
-            <li key={profile.id}>{profile.avatar} {profile.name} - {profile.specialization}</li>
-          ))}
+          {filteredProfiles
+            .filter((p) => p.type === "teacher")
+            .map((profile) => (
+              <li key={profile.id}>
+                {profile.avatar} {profile.name} - {profile.specialization}
+                <button className="delete-button" onClick={() => deleteProfile(profile.id)}>❌</button>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

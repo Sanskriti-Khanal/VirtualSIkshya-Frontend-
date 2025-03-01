@@ -110,13 +110,13 @@ const TeacherDashboard = () => {
           <div className="dashboard-row">
             <div className="stats-card" onClick={() => showModal("studentStats")}>
               <h5>Students</h5>
-              <h2>26,288</h2>
+              <h2>250</h2>
               
             </div>
 
             <div className="stats-card" onClick={() => showModal("teacherStats")}>
               <h5>Teachers</h5>
-              <h2>45</h2>
+              <h2>8</h2>
             </div>
 
 

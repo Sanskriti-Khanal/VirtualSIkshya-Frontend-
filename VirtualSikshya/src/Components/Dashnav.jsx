@@ -2,13 +2,15 @@ import React, { useContext, useState, useEffect } from "react";
 import { DarkModeContext } from "./Darkmode";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../styles/Sidebar.css";
-import profileImage from "../assets/Images/profile.jpg";
+import adminImage from "../assets/Images/admin.jpg";
+import teacherImage from "../assets/Images/teacher.jpg";
+import studentImage from "../assets/Images/student.jpg";
 
 const Dashnav = ({ role }) => {
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
     const [userName, setUserName] = useState("User");
     const [notices, setNotices] = useState([]);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Single state for notification dropdown
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Fetch user name from localStorage
     useEffect(() => {
@@ -17,7 +19,7 @@ const Dashnav = ({ role }) => {
             try {
                 const parsedUser = JSON.parse(storedUser);
                 if (parsedUser.name) {
-                    setUserName(parsedUser.name);
+                    setUserName(parsedUser.name);  // Set user's name dynamically
                 }
             } catch (error) {
                 console.error("Error parsing user data:", error);
@@ -25,7 +27,14 @@ const Dashnav = ({ role }) => {
         }
     }, []);
 
-    // Fetch notifications dynamically (you can replace this with an API call)
+    // Determine Profile Image Based on Role
+    const getProfileImage = () => {
+        if (role === "admin") return adminImage;
+        if (role === "teacher") return teacherImage;
+        return studentImage;
+    };
+
+    // Fetch notifications dynamically
     useEffect(() => {
         setNotices([
             { id: 1, title: "🎥 Video Link for Testing", description: "Check SP5000COM - Android Development Week 9 for the source code and testing video link.", createdAt: new Date() },
@@ -109,9 +118,9 @@ const Dashnav = ({ role }) => {
                     )}
                 </div>
 
-                {/* User Profile */}
-                <img src={profileImage} alt="Profile" className="profile-image" />
-                <span className="profile-name">{userName}</span>
+                {/* Dynamic User Profile Image */}
+                <img src={getProfileImage()} alt="Profile" className="profile-image" />
+               
             </div>
         </nav>
     );

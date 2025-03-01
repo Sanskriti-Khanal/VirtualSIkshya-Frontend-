@@ -2,8 +2,29 @@ import React, { useState } from "react";
 import "../../styles/quiz.css";
 
 const TeacherQuizSystem = () => {
-  const [quizzes, setQuizzes] = useState([]);
-  const [newQuiz, setNewQuiz] = useState({ title: "", questions: [] });
+  const [quizzes, setQuizzes] = useState([
+    {
+      id: 1,
+      title: "JavaScript Fundamentals",
+      duration: 30, // Duration in minutes
+      questions: [
+        {
+          id: 1,
+          question: "What is the output of typeof null?",
+          options: ["undefined", "object", "null", "number"],
+          correctAnswer: 1,
+        },
+        {
+          id: 2,
+          question: "Which method is used to add elements to the end of an array?",
+          options: ["push()", "pop()", "shift()", "unshift()"],
+          correctAnswer: 0,
+        },
+      ],
+    },
+  ]);
+  
+  const [newQuiz, setNewQuiz] = useState({ title: "", duration: 0, questions: [] });
   const [showCreateForm, setShowCreateForm] = useState(false);
 
   // Add a new question
@@ -12,15 +33,15 @@ const TeacherQuizSystem = () => {
       ...newQuiz,
       questions: [
         ...newQuiz.questions,
-        { question: "", options: ["", "", "", ""], correctAnswer: 0 },
+        { id: Date.now(), question: "", options: ["", "", "", ""], correctAnswer: 0 },
       ],
     });
   };
 
   // Update a question text
-  const updateQuestion = (index, value) => {
+  const updateQuestion = (qIndex, value) => {
     const updatedQuestions = [...newQuiz.questions];
-    updatedQuestions[index].question = value;
+    updatedQuestions[qIndex].question = value;
     setNewQuiz({ ...newQuiz, questions: updatedQuestions });
   };
 
@@ -38,10 +59,10 @@ const TeacherQuizSystem = () => {
     setNewQuiz({ ...newQuiz, questions: updatedQuestions });
   };
 
-  // Save quiz
+  // Save new quiz
   const saveQuiz = () => {
     setQuizzes([...quizzes, { ...newQuiz, id: quizzes.length + 1 }]);
-    setNewQuiz({ title: "", questions: [] });
+    setNewQuiz({ title: "", duration: 0, questions: [] });
     setShowCreateForm(false);
   };
 
@@ -50,13 +71,19 @@ const TeacherQuizSystem = () => {
     setQuizzes(quizzes.filter((quiz) => quiz.id !== id));
   };
 
+  // Edit existing quiz
+  const editQuiz = (quiz) => {
+    setNewQuiz(quiz);
+    setShowCreateForm(true);
+  };
+
   return (
     <div className="quiz-management">
-      <h1>Teacher Quiz Management</h1>
+      <h1>📚 Teacher Quiz Management</h1>
 
       {/* Create Quiz Button */}
       <button onClick={() => setShowCreateForm(!showCreateForm)} className="button primary-button">
-        {showCreateForm ? "Cancel" : "Create New Quiz"}
+        {showCreateForm ? "Cancel" : "➕ Create New Quiz"}
       </button>
 
       {/* Quiz Creation Form */}
@@ -68,8 +95,14 @@ const TeacherQuizSystem = () => {
             value={newQuiz.title}
             onChange={(e) => setNewQuiz({ ...newQuiz, title: e.target.value })}
           />
+          <input
+            type="number"
+            placeholder="Duration (Minutes)"
+            value={newQuiz.duration}
+            onChange={(e) => setNewQuiz({ ...newQuiz, duration: e.target.value })}
+          />
           {newQuiz.questions.map((q, qIndex) => (
-            <div key={qIndex} className="question-section">
+            <div key={q.id} className="question-section">
               <input
                 type="text"
                 placeholder="Question"
@@ -95,25 +128,28 @@ const TeacherQuizSystem = () => {
             </div>
           ))}
           <button onClick={addQuestion} className="button outline-button">
-            Add Question
+            ➕ Add Question
           </button>
           <button onClick={saveQuiz} className="button success-button">
-            Save Quiz
+            ✅ Save Quiz
           </button>
         </div>
       )}
 
       {/* Quiz List */}
       <div className="quiz-list">
-        <h2>Available Quizzes</h2>
+        <h2>📝 Available Quizzes</h2>
         {quizzes.length === 0 ? (
           <p>No quizzes available. Create one!</p>
         ) : (
           quizzes.map((quiz) => (
             <div key={quiz.id} className="quiz-card">
-              <h3>{quiz.title}</h3>
+              <h3>{quiz.title} ({quiz.duration} min)</h3>
+              <button className="button edit-button" onClick={() => editQuiz(quiz)}>
+                ✏️ Edit
+              </button>
               <button className="button danger-button" onClick={() => deleteQuiz(quiz.id)}>
-                Delete
+                ❌ Delete
               </button>
             </div>
           ))

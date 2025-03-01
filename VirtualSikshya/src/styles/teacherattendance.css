@@ -1,102 +1,106 @@
-/* General Styles */
-body {
-    font-family: "Poppins", sans-serif;
-    background-color: #f4f7fc;
-    margin: 0;
-    padding: 0;
-  }
+.attendance-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
   
-  /* Attendance Container */
-  .attendance-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .attendance-container h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Filter Section */
-  .filter-section {
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  .filter-section label {
-    font-weight: bold;
-    font-size: 14px;
-    margin-right: 10px;
-  }
-  
-  .filter-section select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  /* Table Styles */
-  .attendance-table {
-    overflow-x: auto;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  thead {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-  }
-  
-  /* Attendance Select */
-  select {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  /* Status Colors */
-  .status-present {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .status-absent {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .status-leave {
-    color: orange;
-    font-weight: bold;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .attendance-container {
-      width: 90%;
-    }
-  
-    table {
-      font-size: 14px;
-    }
-  }
-  
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-section label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.filter-section select {
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.attendance-table {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #3498db;
+  color: white;
+}
+
+.attendance-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+button {
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.present {
+  background: #2ecc71;
+  color: white;
+}
+
+.absent {
+  background: #e74c3c;
+  color: white;
+}
+
+.leave {
+  background: #f39c12;
+  color: white;
+}
+
+.present:hover {
+  background: #27ae60;
+}
+
+.absent:hover {
+  background: #c0392b;
+}
+
+.leave:hover {
+  background: #e67e22;
+}
+
+.active {
+  opacity: 0.7;
+}
+
+.status-text {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
